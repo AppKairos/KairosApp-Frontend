@@ -1,0 +1,13 @@
+.cabecera{
+    padding-left: 0px;
+}
+
+.home {
+    border-bottom: 5px solid #f39200;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.home-icon {
+    font-size: 30px;
+}
