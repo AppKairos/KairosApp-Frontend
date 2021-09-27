@@ -1,1 +1,25 @@
-/* CSS DE INICIO AQUI, SIN CSS DE CABECERA NI FOOTER */
+/*BUTTONS*/
+body .btn-main{
+    background-color:#F39200;
+    color: #5D213B;
+    border-radius: 15px;
+}
+body .btn-main-login{
+    background-color:#5D213B;
+    color: white;
+    border-radius: 15px;
+}
+body .btn-main-login:hover{
+    background-color:#680f36;
+    color: white;
+}
+.btn-main:hover{
+    background-color:#e68a00;
+    color: #5D213B;
+}
+body .btn-outline-main{
+    background-color:#0000;
+    color: #5D213B;
+    border-color: #F39200;
+    border-radius: 15px;
+}
