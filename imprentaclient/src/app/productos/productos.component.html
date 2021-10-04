@@ -1,1 +1,25 @@
-<p>productos works!</p>
+<br>
+<br><br>
+<br>
+<table class="table table-hover table-borderless">
+    <thead class="thead-dark">
+      <tr>
+        <th scope="col">Nombre</th>
+        <th scope="col">Color</th>
+        <th scope="col">Tipo Papel</th>
+        <th scope="col">Ancho</th>
+        <th scope="col">Largo</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let p of productosLista; let i = index">
+        <td>{{ p.nombre }}</td>
+        <td>{{ p.color }}</td>
+        <td>{{ p.tipoPapel }}</td>
+        <td>{{ p.ancho }}</td>
+        <td>{{ p.largo }}</td>
+      </tr>
+    </tbody>
+  </table>
+  <br>
+  <br>
