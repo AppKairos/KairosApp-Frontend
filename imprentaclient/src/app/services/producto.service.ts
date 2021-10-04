@@ -21,7 +21,7 @@ export class ProductoService {
 
   constructor(private http: HttpClient) {
     this.myAppUrl = environment.appUrl;
-    this.myApiUrl = 'api/Producto/';
+    this.myApiUrl = 'api/producto/';
   }
 
   getProductos(): Observable<Response>{

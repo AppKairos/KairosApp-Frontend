@@ -11,13 +11,15 @@ import { FooterComponent } from './footer/footer.component';
 import { InicioComponent } from './inicio/inicio.component';
 import { ProductoService } from './services/producto.service';
 import { ProductosComponent } from './productos/productos.component';
+import { NosotrosComponent } from './nosotros/nosotros.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     FooterComponent,
     InicioComponent,
-    ProductosComponent
+    ProductosComponent,
+    NosotrosComponent
   ],
   imports: [
     BrowserModule,
