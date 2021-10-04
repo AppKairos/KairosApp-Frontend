@@ -308,14 +308,42 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 </head>
 
-<nav class="container-big cabecera" style="background-color: rgb(93, 33, 59);">
-  <a class="navbar-brand home" href="/inicio" style="color: white;">
-    <span class="material-icons home-icon">home</span>
-  </a>
-  <a class="navbar-brand home" href="/productos" style="color: white;">
-    <span>Productos</span>
-  </a>
-</nav>
+    <!--Navbar-->
+    <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #5D213B;">
+      <div class="container">
+        <a class="navbar-brand" href="/imprentaclient/src/app/inicio"><img src="/imprentaclient/src/assets/imagenes/logo kairos blanco-01.png" alt="logo" style="height:50px;"></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggler" aria-controls="navbarToggler" aria-expanded="true" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarToggler">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="/imprentaclient/src/app/nosotros">Nosotros</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" href="/imprentaclient/src/app/productos">Productos</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link disabled" href="/imprentaclient/src/app/cotizaciones" tabindex="-1" aria-disabled="true">Cotizaciones</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link disabled" href="/imprentaclient/src/app/reservas" tabindex="-1" aria-disabled="true">Reservas</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link disabled" href="/imprentaclient/src/app/clientes" tabindex="-1" aria-disabled="true">Clientes</a>
+            </li>
+          </ul>
+          <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="/imprentaclient/src/app/iniciar_sesion">Iniciar Sesión</a>
+            </li>
+            <li class="nav-item">
+              <a class="btn btn-main" aria-current="page" href="/imprentaclient/src/app/registrarse">Registrarse</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
 
 <router-outlet></router-outlet>
 
