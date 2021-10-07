@@ -14,6 +14,7 @@ import { ProductosComponent } from './productos/productos.component';
 import { NosotrosComponent } from './nosotros/nosotros.component';
 import { LoginComponent } from './login/login.component';
 import { RegistrarseComponent } from './registrarse/registrarse.component';
+import { RegistrarseService } from './services/registrarse.service';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import { RegistrarseComponent } from './registrarse/registrarse.component';
     NgbModule
   ],
   providers: [
-    ProductoService
+    ProductoService,
+    RegistrarseService
   ],
   bootstrap: [AppComponent]
 })
