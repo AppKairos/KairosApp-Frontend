@@ -15,6 +15,8 @@ import { NosotrosComponent } from './nosotros/nosotros.component';
 import { LoginComponent } from './login/login.component';
 import { RegistrarseComponent } from './registrarse/registrarse.component';
 import { RegistrarseService } from './services/registrarse.service';
+import { CotizacionesComponent } from './cotizaciones/cotizaciones.component';
+import { EmpastadosComponent } from './empastados/empastados.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +26,9 @@ import { RegistrarseService } from './services/registrarse.service';
     ProductosComponent,
     NosotrosComponent,
     LoginComponent,
-    RegistrarseComponent
+    RegistrarseComponent,
+    CotizacionesComponent,
+    EmpastadosComponent
   ],
   imports: [
     BrowserModule,
