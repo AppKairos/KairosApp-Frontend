@@ -17,6 +17,8 @@ import { RegistrarseComponent } from './registrarse/registrarse.component';
 import { RegistrarseService } from './services/registrarse.service';
 import { CotizacionesComponent } from './cotizaciones/cotizaciones.component';
 import { EmpastadosComponent } from './empastados/empastados.component';
+import { FormsModule } from '@angular/forms';
+import { CabeceraComponent } from './cabecera/cabecera.component';
 
 @NgModule({
   declarations: [
@@ -28,14 +30,16 @@ import { EmpastadosComponent } from './empastados/empastados.component';
     LoginComponent,
     RegistrarseComponent,
     CotizacionesComponent,
-    EmpastadosComponent
+    EmpastadosComponent,
+    CabeceraComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     ReactiveFormsModule,
-    NgbModule
+    NgbModule,
+    FormsModule
   ],
   providers: [
     ProductoService,

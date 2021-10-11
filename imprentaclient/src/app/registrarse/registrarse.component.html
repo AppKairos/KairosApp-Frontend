@@ -3,32 +3,32 @@
     <div class="row">
         <div class="col-12 col-lg-4" style="background-color: #5D213B;"> 
                 <div class="col text-center">
-                    <img class="img-fluid pt-5 pb-5" src="/assets/imagenes/logo kairos blanco-01.png" alt="logo">
+                    <img class="img-fluid pt-5 pb-5" src="/assets/logo kairos blanco-01.png" alt="logo">
                 </div>
         </div>
         <div class="col-12 col-lg-8 p-5" style="background-color:white;">
             <h1>Registrarse</h1>
             <!--FORM-->
-            <form action="">
+            <form [formGroup]="profileForm" (ngSubmit)="onSubmit()">
                 <label for="ci" class="form-label">C.I.</label>
-                <input type="ci" class="form-control" id="ci" aria-describedby="ci">
+                <input type="number" class="form-control" id="ci" aria-describedby="ci" formControlName="ci">
 
                 <label for="nombre" class="form-label">Nombre Completo:</label>
-                <input type="nombre" class="form-control" id="nombre" aria-describedby="nombre">
+                <input type="text" class="form-control" id="nombre" aria-describedby="nombre" formControlName="nombre">
 
                 <label for="exampleInputEmail1" class="form-label">Correo Electrónico:</label>
-                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" formControlName="correo">
                 
                 <label for="numero" class="form-label">Número de Teléfono:</label>
-                <input type="numero" class="form-control" id="numero" aria-describedby="numero">
+                <input type="number" class="form-control" id="numero" aria-describedby="numero" formControlName="telefono">
                 <div class="mb-3">
                     <label for="exampleInputPassword1" class="form-label">Contraseña:</label>
-                    <input type="password" class="form-control" id="exampleInputPassword1">
-                  </div>
+                    <input type="password" class="form-control" id="exampleInputPassword1" formControlName="password">
+                </div>
+                <div class="d-grid gap-2">
+                    <button type="submit" class="btn-main pt-2 pb-2" [disabled]="!profileForm.valid">Crear Cuenta</button>
+                </div>
             </form>
-            <div class="d-grid gap-2">
-                <button type="submit" class="btn-main pt-2 pb-2">Crear Cuenta</button>
-            </div>
             <p>¿Ya tienes una cuenta? <a href="/login">Iniciar Sesión</a></p>
         </div>
     </div>

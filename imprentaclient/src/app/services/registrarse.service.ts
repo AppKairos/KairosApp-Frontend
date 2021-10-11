@@ -14,23 +14,18 @@ export class RegistrarseService {
   myAppUrl: string;
   myApiUrl: string;
 
+  httpOptions = {
+    headers: new HttpHeaders({
+      'Content-Type':  'application/json'
+    })
+  };
+
   constructor(private http: HttpClient) {
     this.myAppUrl = environment.appUrl;
-    this.myApiUrl = 'api/auth/registrarse';
+    this.myApiUrl = 'api/auth/';
   }
 
-  registrarse(newUsuario: Usuario): Observable<Response>{
-    fetch(this.myAppUrl + this.myApiUrl, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(newUsuario),
-    })
-    .then((response) => response.json())
-    .then((data) => {
-      console.log('Success:', data);
-    });
-    return this.http.get<Response>(this.myAppUrl + this.myApiUrl);
+  registrarse(usuarioRegistrarse: any): Observable<Response>{
+    return this.http.post<Response>(this.myAppUrl + this.myApiUrl + 'register', usuarioRegistrarse, this.httpOptions);
   }
 }

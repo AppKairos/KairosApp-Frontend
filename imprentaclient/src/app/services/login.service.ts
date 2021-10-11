@@ -10,5 +10,21 @@ import { Response } from '../models/response';
 })
 export class LoginService {
 
-  constructor() { }
+  myAppUrl: string;
+  myApiUrl: string;
+
+  httpOptions = {
+    headers: new HttpHeaders({
+      'Content-Type':  'application/json'
+    })
+  };
+
+  constructor(private http: HttpClient) {
+    this.myAppUrl = environment.appUrl;
+    this.myApiUrl = 'api/auth/';
+  }
+
+  login(usuarioLogin: any): Observable<Response>{
+    return this.http.post<Response>(this.myAppUrl + this.myApiUrl + 'login', usuarioLogin, this.httpOptions);
+  }
 }

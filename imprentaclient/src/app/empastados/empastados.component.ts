@@ -7,9 +7,27 @@ import { Component, OnInit } from '@angular/core';
 })
 export class EmpastadosComponent implements OnInit {
 
+  facultad = '';
+  carrera = '';
+  titulo = '';
+  trabajo = '';
+  autor = '';
+  tutor = '';
+  mes = '';
+  anio = '';
+  precioTotal: number;
+  cantidad = 0;
+
   constructor() { }
 
   ngOnInit(): void {
   }
 
+  habilitado():boolean {
+    if(JSON.parse(localStorage.getItem('usuario')).token){
+      return true;
+    }else {
+      return false;
+    }
+  }
 }

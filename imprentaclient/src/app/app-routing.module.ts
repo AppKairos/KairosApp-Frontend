@@ -5,6 +5,8 @@ import { NosotrosComponent } from './nosotros/nosotros.component';
 import { ProductosComponent } from './productos/productos.component';
 import { LoginComponent } from './login/login.component';
 import { RegistrarseComponent } from './registrarse/registrarse.component';
+import { CotizacionesComponent } from './cotizaciones/cotizaciones.component';
+import { EmpastadosComponent } from './empastados/empastados.component';
 
 const routes: Routes = [
   { path:'inicio', component: InicioComponent, pathMatch: 'full' },
@@ -12,6 +14,8 @@ const routes: Routes = [
   { path:'productos', component: ProductosComponent, pathMatch: 'full' },
   { path:'login', component: LoginComponent, pathMatch: 'full' },
   { path:'registrarse', component: RegistrarseComponent, pathMatch: 'full' },
+  { path:'cotizaciones', component: CotizacionesComponent, pathMatch: 'full' },
+  { path:'empastados', component: EmpastadosComponent, pathMatch: 'full' },
   { path:'**', redirectTo: '/inicio' }
 ];
 

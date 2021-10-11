@@ -1,0 +1,85 @@
+.container1 {
+    position: relative;
+    text-align: center;
+  }
+  
+  .facultad {
+    text-align: center;
+    font-weight: bolder;
+    position: absolute;
+    top: 130px;
+    left: 58%;
+    transform: translateX(-50%);
+    overflow-x: hidden;
+  }
+  
+  .carrera {
+    text-align: center;
+    font-weight: bolder;
+    position: absolute;
+    top: 185px;
+    left: 58%;
+    transform: translateX(-50%);
+    overflow-x: hidden;
+  }
+  
+  .titulo {
+    text-align: center;
+    font-weight: bolder;
+    position: absolute;
+    top: 480px;
+    left: 58%;
+    transform: translateX(-50%);
+    overflow-x: hidden;
+  }
+  
+  .trabajo {
+    text-align: center;
+    font-weight: bolder;
+    position: absolute;
+    top: 630px;
+    left: 58%;
+    transform: translateX(-50%);
+    overflow-x: hidden;
+  }
+
+  .autor {
+    text-align: center;
+    font-weight: bolder;
+    position: absolute;
+    top: 680px;
+    left: 58%;
+    transform: translateX(-50%);
+    overflow-x: hidden;
+  }
+
+  .tutor {
+    text-align: center;
+    font-weight: bolder;
+    position: absolute;
+    top: 720px;
+    left: 58%;
+    transform: translateX(-50%);
+    overflow-x: hidden;
+  }
+
+  .mes {
+    font-size: 7px;
+    text-align: center;
+    font-weight: bolder;
+    position: absolute;
+    top: 804px;
+    left: 57%;
+    transform: translateX(-50%);
+    overflow-x: hidden;
+  }
+
+  .anio {
+    text-align: center;
+    font-weight: bolder;
+    position: absolute;
+    top: 799px;
+    left: 67%;
+    transform: translateX(-50%);
+    overflow-x: hidden;
+  }
