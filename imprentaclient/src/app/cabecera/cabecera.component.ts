@@ -32,13 +32,18 @@ export class CabeceraComponent implements OnInit, OnDestroy {
       if(data.usuario["token"]){
         this.visible = false;
         localStorage.setItem('visible',JSON.stringify(this.visible));
-        if(data.usuario["usuario"].rol === 'admin'){
+        if(data.usuario["usuario"].rol === "admin"){
+          this.admin = true;
+          localStorage.setItem('admin',JSON.stringify(this.admin));
+        }else{
           this.admin = false;
           localStorage.setItem('admin',JSON.stringify(this.admin));
         }
       }else{
         this.visible = true;
         localStorage.setItem('visible',JSON.stringify(this.visible));
+        this.admin = false;
+        localStorage.setItem('admin',JSON.stringify(this.admin));
       }
     });
   }
