@@ -33,7 +33,7 @@ export class RegistrarseComponent implements OnInit {
       //Object.assign([], response);
       console.log(response);
       alert('Registrado correctamente');
-      this.router.navigate(['/productos']);
+      this.router.navigate(['/login']);
     });
   }
 }
