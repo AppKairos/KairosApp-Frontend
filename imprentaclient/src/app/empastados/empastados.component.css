@@ -83,3 +83,12 @@
     transform: translateX(-50%);
     overflow-x: hidden;
   }
+
+  #precio {
+    background-color: white;
+    border-radius: 3px;
+    margin-top: 10px;
+    text-align: center;
+    border: 1px solid rgba(0,0,0,0.2);
+    font-size: 20px;
+  }

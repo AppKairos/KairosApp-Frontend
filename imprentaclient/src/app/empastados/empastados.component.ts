@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-empastados',
@@ -15,16 +16,34 @@ export class EmpastadosComponent implements OnInit {
   tutor = '';
   mes = '';
   anio = '';
-  precioTotal: number;
+  //precioTotal: number;
   cantidad = 0;
+  //precio = 0;
+  cliente = '';
 
   constructor() { }
 
   ngOnInit(): void {
-  }
+    var usuarioEmpastado = {};
+    
+    try{
+      usuarioEmpastado = JSON.parse(localStorage.getItem('usuario'));
+    }catch(e){}
+    
+    if(usuarioEmpastado["usuario"]){
+      this.cliente = usuarioEmpastado["usuario"].nombre;
+    }else{
+      this.cliente = '';
+    }
+  } 
 
   habilitado():boolean {
-    if(JSON.parse(localStorage.getItem('usuario')).token){
+    var usuarioEmpastado = {};
+    try{
+      usuarioEmpastado = JSON.parse(localStorage.getItem('usuario'));
+    }catch(e){}
+
+    if(usuarioEmpastado['token']){
       return true;
     }else {
       return false;

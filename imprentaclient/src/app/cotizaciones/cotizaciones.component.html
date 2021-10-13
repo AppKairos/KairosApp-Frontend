@@ -1,3 +1,5 @@
+<form [formGroup]="profileForm" (ngSubmit)="cotizarAfiche()">
+
 <section>
     <div class="container">
       <div class="row pt-3">
@@ -7,79 +9,86 @@
       </div>
       <div class="row">
           <div class="col-12 col-lg-3">
-              <label for="afiche" class="form-label">Cantidad de Afiches</label>
-              <input type="afiche" class="form-control" id="afiche" aria-describedby="afiche">
+              <label for="cantidad" class="form-label"><strong>Cantidad de Afiches</strong></label>
+              <input type="number" class="form-control" id="cantidad" aria-describedby="afiche"  formControlName="cantidad">
           </div>
           
       </div>
       <div class="row pt-5">
           <div class="col-12 col-lg-3">
-              <div class="list-group"> 
-                  <label for="tam" class="form-label">Tamaño de papel</label>
-                  <a href="#" class="list-group-item">Carta</a>
-                  <a href="#" class="list-group-item">Legal</a> 
-                  <a href="#" class="list-group-item">Cuarto Oficio</a> 
-                  <a href="#" class="list-group-item">Doble Oficio</a> 
-              </div>
+                <label for="tam" class="form-label"><strong>Tamaño de papel</strong></label>
+                <select id="tam" class="form-select" aria-label="Default select example" formControlName="Tam_papel">
+                    <option selected>Seleccione una opcion</option>
+                    <option value="Carta">Carta</option>
+                    <option value="Legal">Legal</option>
+                    <option value="Cuarto Oficio">Cuarto Oficio</option>
+                </select>
           </div>
           <div class="col-12 col-lg-3">
-              <div class="list-group"> 
-                  <label for="color" class="form-label">Color Impresión</label>
-                  <a href="#" class="list-group-item">Full Color</a>
-                  <a href="#" class="list-group-item">Duo Tono</a> 
-                  <a href="#" class="list-group-item">Mono Color</a>
-              </div>
+                <label for="color" class="form-label"><strong>Color Impresión</strong></label>
+                <select id="color" class="form-select" aria-label="Default select example" formControlName="color">
+                    <option selected>Seleccione una opcion</option>
+                    <option value="Full Color">Full Color</option>
+                    <option value="Duo Tono">Duo Tono</option>
+                    <option value="Mono Color">Mono Color</option>
+                </select>
           </div>
           <div class="col-12 col-lg-3">
-              <div class="list-group"> 
-                  <label for="tipo" class="form-label">Tipo de papel</label>
-                  <a href="#" class="list-group-item">Bond</a>
-                  <a href="#" class="list-group-item">Couche</a> 
-                  <a href="#" class="list-group-item">Duplex</a> 
-                  <a href="#" class="list-group-item">Triplex</a> 
-              </div>
+                <label for="tipo" class="form-label"><strong>Tipo de papel</strong></label>
+                <select id="tipo" class="form-select" aria-label="Default select example" formControlName="tipo_papel">
+                    <option selected>Seleccione una opcion</option>
+                    <option value="Bond">Bond</option>
+                    <option value="Couche">Couche</option>
+                    <option value="Duplex">Duplex</option>
+                    <option value="Triplex">Triplex</option>
+                </select>
           </div>
           <div class="col-12 col-lg-3">
-              <div class="list-group"> 
-                  <label for="gramaje" class="form-label">Gramaje de papel</label>
-                  <a href="#" class="list-group-item">Bond 63</a>
-                  <a href="#" class="list-group-item">Couche 115</a> 
-                  <a href="#" class="list-group-item">Duplex 125</a> 
-                  <a href="#" class="list-group-item">Triplex 150</a> 
-              </div>
+                <label for="gramaje" class="form-label"><strong>Gramaje de papel</strong></label>
+                <select id="gramaje" class="form-select" aria-label="Default select example" formControlName="gramaje_papel">
+                    <option selected>Seleccione una opcion</option>
+                    <option value="Bond 63">Bond 63</option>
+                    <option value="Couche 115">Couche 115</option>
+                    <option value="Duplex 125">125</option>
+                    <option value="Triplex 150">Triplex 150</option>
+                </select>
           </div>
       </div>
       <div class="row pt-5">
           <div class="col-12 col-lg-3">
-              <div class="list-group"> 
-                  <label for="placa" class="form-label">Tamaño de placa</label>
-                  <a href="#" class="list-group-item">GTO 53X33</a>
-                  <a href="#" class="list-group-item">ROLAND 52X72</a> 
-              </div>
+                <label for="placa" class="form-label"><strong>Tamaño de placa</strong></label>
+                <select id="placa" class="form-select" aria-label="Default select example" formControlName="tam_placa">
+                    <option selected>Seleccione una opcion</option>
+                    <option value="GTO 53X33">GTO 53X33</option>
+                    <option value="ROLAND 52X72">ROLAND 52X72</option>
+                </select>
           </div>
           <div class="col-12  col-lg-3">
-              <label for="afiche" class="form-label">Precio Diseño</label>
-              <input type="afiche" class="form-control" id="afiche" aria-describedby="afiche">
-              <label for="afiche" class="form-label">Precio Acabado</label>
-              <input type="afiche" class="form-control" id="afiche" aria-describedby="afiche">
-              <label for="afiche" class="form-label">Gananacia %</label>
-              <input type="afiche" class="form-control" id="afiche" aria-describedby="afiche">
+              <label for="pDisenio" class="form-label"><strong>Precio Diseño</strong></label>
+              <input type="number" class="form-control" id="pDisenio" aria-describedby="afiche" formControlName="precio_design">
+              <label for="pAcabado" class="form-label"><strong>Precio Acabado</strong></label>
+              <input type="number" class="form-control" id="pAcabado" aria-describedby="afiche" formControlName="precio_acabado">
+              <label for="ganancia" class="form-label"><strong>Gananacia %</strong></label>
+              <input type="number" class="form-control" id="ganancia" aria-describedby="afiche" formControlName="ganancia">
             </div>
           <div class="col-12 col-lg-1">
           </div>
           <div class="col-12  col-lg-5">
-              <label for="sin" class="form-label">Sin Factura</label>
-              <label for="iva" class="form-label">IVA 16%</label>
-              <label for="con" class="form-label">Con Factura</label> 
-              <label for="total" class="form-label">Total</label>
+              <label for="sin" class="form-label"><strong>Sin Factura: </strong><div id="sinFactura">{{sinFactura}}</div></label><br>
+              <label for="iva" class="form-label"><strong>IVA: </strong><div id="iva">{{iva}}</div></label><br>
+              <label for="con" class="form-label"><strong>Con Factura: </strong><div id="conFactura">{{conFactura}}</div></label><br>
+              <label for="total" class="form-label"><strong>Total: </strong><div id="total">{{total}}</div></label>
           </div>
       </div>
       <div class="row pt-3">
           <div class="col-12 col-lg-3">
           </div>
           <div class="d-grid col-12 col-lg-3">
-              <a href="" class="btn btn-main p-12 pb-2">Cotizar</a>
+              <button type="submit" class="btn btn-main p-12 pb-2" >Cotizar</button>
           </div>
       </div>
     </div>
 </section>
+
+</form>
+<br>
