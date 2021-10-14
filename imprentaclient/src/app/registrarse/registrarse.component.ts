@@ -8,6 +8,9 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { NgModule } from '@angular/core';
 import { Router, RouterModule, Routes } from '@angular/router';
 
+import { SocialAuthService, SocialUser } from "angularx-social-login";
+import { FacebookLoginProvider, GoogleLoginProvider } from "angularx-social-login";
+
 @Component({
   selector: 'app-registrarse',
   templateUrl: './registrarse.component.html',
@@ -38,9 +41,17 @@ export class RegistrarseComponent implements OnInit {
     ])
   });
 
-  constructor(private registrarseService: RegistrarseService, private modalservice: NgbModal, private router: Router) { }
+  socialUser: SocialUser;
+  isLoggedin: boolean = null;
+
+  constructor(private authService: SocialAuthService, private registrarseService: RegistrarseService, private modalservice: NgbModal, private router: Router) { }
 
   ngOnInit(): void {
+    this.authService.authState.subscribe((user) => {
+      this.socialUser = user;
+      this.isLoggedin = (user != null);
+      console.log(this.socialUser);
+    });
   }
 
   onSubmit() {
@@ -55,5 +66,17 @@ export class RegistrarseComponent implements OnInit {
   validarCampo(campo:string):string {
     const campoValidado = this.profileForm.get(campo);
     return (!campoValidado.valid && campoValidado.touched) ? 'is-invalid' : campoValidado.touched ? 'is-valid' : '';
+  }
+  
+  iniciarGoogle(): void {
+    this.authService.signIn(GoogleLoginProvider.PROVIDER_ID);
+  }
+
+  iniciarFacebook(): void {
+    this.authService.signIn(FacebookLoginProvider.PROVIDER_ID);
+  }
+
+  logoutGoogleFacebook(): void {
+    this.authService.signOut();
   }
 }

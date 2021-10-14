@@ -9,6 +9,9 @@ import { NgModule } from '@angular/core';
 import { Router, RouterModule, Routes } from '@angular/router';
 import { CabeceraService } from '../services/cabecera.service';
 
+import { SocialAuthService, SocialUser } from "angularx-social-login";
+import { FacebookLoginProvider, GoogleLoginProvider } from "angularx-social-login";
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -28,14 +31,22 @@ export class LoginComponent implements OnInit, OnDestroy {
   });
 
   //usuario: any;
+  socialUser: SocialUser;
+  isLoggedin: boolean = null;
 
-  constructor(private loginService: LoginService, private cabeceraService: CabeceraService, private modalservice: NgbModal, private router: Router) { }
+  constructor(private authService: SocialAuthService, private loginService: LoginService, private cabeceraService: CabeceraService, private modalservice: NgbModal, private router: Router) { }
 
   ngOnDestroy(): void {
   }
 
   ngOnInit(): void {
     this.logout();
+
+    this.authService.authState.subscribe((user) => {
+      this.socialUser = user;
+      this.isLoggedin = (user != null);
+      console.log(this.socialUser);
+    });
   }
 
   onSubmit(): void {
@@ -58,5 +69,17 @@ export class LoginComponent implements OnInit, OnDestroy {
   validarCampo(campo:string):string {
     const campoValidado = this.profileForm.get(campo);
     return (!campoValidado.valid && campoValidado.touched) ? 'is-invalid' : campoValidado.touched ? 'is-valid' : '';
+  }
+
+  iniciarGoogle(): void {
+    this.authService.signIn(GoogleLoginProvider.PROVIDER_ID);
+  }
+
+  iniciarFacebook(): void {
+    this.authService.signIn(FacebookLoginProvider.PROVIDER_ID);
+  }
+
+  logoutGoogleFacebook(): void {
+    this.authService.signOut();
   }
 }

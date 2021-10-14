@@ -1,81 +1,102 @@
-<br>
 <div class="container">
-    <div class="row">
-        <div class="col-12 col-lg-4" style="background-color: #5D213B;"> 
-                <div class="col text-center">
-                    <img class="img-fluid pt-5 pb-5" src="/assets/logo kairos blanco-01.png" alt="logo">
-                </div>
+    <div class="row pt-3 justify-content-center cartaLogin">
+        <div class="col col-12 col-lg-4 text-center backImgLogin align-self-center"> 
+            <img class="img-fluid imgLogin altoImg" src="/assets/logo kairos blanco-01.png" alt="logo">
         </div>
-        <div class="col-12 col-lg-8 p-5" style="background-color:white;">
-            <h1>Registrarse</h1>
-            <!--FORM-->
-            <form [formGroup]="profileForm" (ngSubmit)="onSubmit()">
-                <label for="ci" class="form-label">C.I.</label>
-                <input type="number" class="form-control" formControlName="ci"  [class]="validarCampo('ci')">
-                
-                <div *ngIf="profileForm.get('ci').invalid && (profileForm.get('ci').dirty || profileForm.get('ci').touched)">
-                    <div *ngIf="profileForm.get('ci').errors?.required" class="error">
-                        Este campo es obligatorio.
-                    </div>
-                    <div *ngIf="profileForm.get('ci').errors?.pattern" class="error">
-                        Entre 7 y 8 caracteres, solo digitos
-                    </div>
-                </div>
-
-                <label for="nombre" class="form-label">Nombre Completo:</label>
-                <input type="text" class="form-control" formControlName="nombre" [class]="validarCampo('nombre')">
-
-                <div *ngIf="profileForm.get('nombre').invalid && (profileForm.get('nombre').dirty || profileForm.get('nombre').touched)">
-                    <div *ngIf="profileForm.get('nombre').errors?.required" class="error">
-                        Este campo es obligatorio.
-                    </div>
-                    <div *ngIf="profileForm.get('nombre').errors?.pattern && !profileForm.get('nombre').errors?.required" class="error">
-                        Ingrese un nombre valido
-                    </div>
-                </div>
-
-                <label for="exampleInputEmail1" class="form-label">Correo Electrónico:</label>
-                <input type="text" class="form-control" formControlName="correo" [class]="validarCampo('correo')">
-
-                <div *ngIf="profileForm.get('correo').invalid && (profileForm.get('correo').dirty || profileForm.get('correo').touched)">
-                    <div *ngIf="profileForm.get('correo').errors?.required" class="error">
-                        Este campo es obligatorio.
-                    </div>
-                    <div *ngIf="profileForm.get('correo').errors?.pattern && !profileForm.get('correo').errors?.required" class="error">
-                        Ingrese un correo valido
-                    </div>
-                </div>
-
-                <label for="numero" class="form-label">Número de Teléfono:</label>
-                <input type="number" class="form-control" formControlName="telefono" [class]="validarCampo('telefono')">
-
-                <div *ngIf="profileForm.get('telefono').invalid && (profileForm.get('telefono').dirty || profileForm.get('telefono').touched)">
-                    <div *ngIf="profileForm.get('telefono').errors?.required" class="error">
-                        Este campo es obligatorio.
-                    </div>
-                    <div *ngIf="profileForm.get('telefono').errors?.pattern && !profileForm.get('telefono').errors?.required" class="error">
-                        Ingrese un telefono valido
-                    </div>
-                </div>
-
-                <div class="mb-3">
-                    <label for="exampleInputPassword1" class="form-label">Contraseña:</label>
-                    <input type="password" class="form-control" formControlName="password"  [class]="validarCampo('password')">
-
-                    <div *ngIf="profileForm.get('password').invalid && (profileForm.get('password').dirty || profileForm.get('password').touched)">
-                        <div *ngIf="profileForm.get('password').errors?.required" class="error">
-                            Este campo es obligatorio.
+        <div class="col col-12 col-lg-5 justify-content-center align-self-center colLogin">
+            <div class="card cardLogin">
+                <div class="card-body">
+                    <form [formGroup]="profileForm" (ngSubmit)="onSubmit()">
+                        <div class="mb-3">
+                            <h1>Registrarse</h1>
+                            <div class="row justify-content-center">
+                                <div class="col col-12 col-md-6 col-lg-6">
+                                    <button class="btn btn-Google" (click)="iniciarGoogle()"><i class="fab fa-google"></i> Registrar con Google</button>
+                                </div>
+                                <div class="col col-12 col-md-6 col-lg-6">
+                                    <button class="btn btn-Facebook" (click)="iniciarFacebook()"><i class="fab fa-facebook"></i> Registrar con Facebook</button>
+                                </div>
+                            </div>
                         </div>
-                        <div *ngIf="profileForm.get('password').errors?.pattern && !profileForm.get('password').errors?.required" class="error">
-                            Minimo 8 caracteres, solo letras y digitos
+                        <div class="mb-3">
+                            <label for="ci" class="form-label">C.I.</label>
+                            <input type="number" class="form-control inputNew" formControlName="ci"  [class]="validarCampo('ci')">
+                            
+                            <div *ngIf="profileForm.get('ci').invalid && (profileForm.get('ci').dirty || profileForm.get('ci').touched)">
+                                <div *ngIf="profileForm.get('ci').errors?.required" class="error">
+                                    Este campo es obligatorio.
+                                </div>
+                                <div *ngIf="profileForm.get('ci').errors?.pattern" class="error">
+                                    Entre 7 y 8 caracteres, solo digitos
+                                </div>
+                            </div>
                         </div>
-                    </div>
+
+                        <div class="mb-3">
+                            <label for="nombre" class="form-label">Nombre Completo</label>
+                            <input type="text" class="form-control inputNew" formControlName="nombre" [class]="validarCampo('nombre')">
+            
+                            <div *ngIf="profileForm.get('nombre').invalid && (profileForm.get('nombre').dirty || profileForm.get('nombre').touched)">
+                                <div *ngIf="profileForm.get('nombre').errors?.required" class="error">
+                                    Este campo es obligatorio.
+                                </div>
+                                <div *ngIf="profileForm.get('nombre').errors?.pattern && !profileForm.get('nombre').errors?.required" class="error">
+                                    Ingrese un nombre valido
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="mb-3">
+                            <label for="correo" class="form-label">Correo Electrónico</label>
+                            <input type="text" class="form-control inputNew" formControlName="correo" [class]="validarCampo('correo')">
+            
+                            <div *ngIf="profileForm.get('correo').invalid && (profileForm.get('correo').dirty || profileForm.get('correo').touched)">
+                                <div *ngIf="profileForm.get('correo').errors?.required" class="error">
+                                    Este campo es obligatorio.
+                                </div>
+                                <div *ngIf="profileForm.get('correo').errors?.pattern && !profileForm.get('correo').errors?.required" class="error">
+                                    Ingrese un correo valido
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="telefono" class="form-label">Número de Teléfono:</label>
+                            <input type="number" class="form-control inputNew" formControlName="telefono" [class]="validarCampo('telefono')">
+            
+                            <div *ngIf="profileForm.get('telefono').invalid && (profileForm.get('telefono').dirty || profileForm.get('telefono').touched)">
+                                <div *ngIf="profileForm.get('telefono').errors?.required" class="error">
+                                    Este campo es obligatorio.
+                                </div>
+                                <div *ngIf="profileForm.get('telefono').errors?.pattern && !profileForm.get('telefono').errors?.required" class="error">
+                                    Ingrese un telefono valido
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="password" class="form-label">Contraseña</label>
+                            <input type="password" class="form-control inputNew" formControlName="password"  [class]="validarCampo('password')">
+        
+                            <div *ngIf="profileForm.get('password').invalid && (profileForm.get('password').dirty || profileForm.get('password').touched)">
+                                <div *ngIf="profileForm.get('password').errors?.required" class="error">
+                                    Este campo es obligatorio.
+                                </div>
+                                <div *ngIf="profileForm.get('password').errors?.pattern && !profileForm.get('password').errors?.required" class="error">
+                                    Minimo 8 caracteres, solo letras y digitos
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row justify-content-center">
+                            <div class="col col-12 col-md-12 col-lg-12">
+                                <button type="submit" [disabled]="!profileForm.valid" class="btn btn-main btnNew">Crear Cuenta</button>
+                                <p>¿Ya tienes una cuenta? <a href="/login">Iniciar Sesión</a></p>
+                            </div>
+                        </div>
+                    </form>
                 </div>
-                <div class="d-grid gap-2">
-                    <button type="submit" class="btn-main pt-2 pb-2" [disabled]="!profileForm.valid">Crear Cuenta</button>
-                </div>
-            </form>
-            <p>¿Ya tienes una cuenta? <a href="/login">Iniciar Sesión</a></p>
+            </div>            
         </div>
     </div>
 </div>

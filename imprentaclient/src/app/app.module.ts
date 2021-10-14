@@ -20,6 +20,12 @@ import { EmpastadosComponent } from './empastados/empastados.component';
 import { FormsModule } from '@angular/forms';
 import { CabeceraComponent } from './cabecera/cabecera.component';
 
+import { SocialLoginModule, SocialAuthServiceConfig, GoogleLoginProvider, FacebookLoginProvider } from 'angularx-social-login';
+import { AfichesService } from './services/afiches.service';
+import { CabeceraService } from './services/cabecera.service';
+import { LoginService } from './services/login.service';
+import { SelloService } from './services/sello.service';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -39,11 +45,32 @@ import { CabeceraComponent } from './cabecera/cabecera.component';
     HttpClientModule,
     ReactiveFormsModule,
     NgbModule,
-    FormsModule
+    FormsModule,
+    SocialLoginModule
   ],
   providers: [
     ProductoService,
-    RegistrarseService
+    RegistrarseService,
+    AfichesService,
+    CabeceraService,
+    LoginService,
+    SelloService,
+    {
+      provide: 'SocialAuthServiceConfig',
+      useValue: {
+        autoLogin: false,
+        providers: [
+          {
+            id: GoogleLoginProvider.PROVIDER_ID,
+            provider: new GoogleLoginProvider('621789969255-9vdjbl9mimhfepbb25hcv860gs6masam.apps.googleusercontent.com')
+          },
+          {
+            id: FacebookLoginProvider.PROVIDER_ID,
+            provider: new FacebookLoginProvider('296934472249724')
+          }
+        ]
+      } as SocialAuthServiceConfig
+    }
   ],
   bootstrap: [AppComponent]
 })

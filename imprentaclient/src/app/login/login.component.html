@@ -1,18 +1,27 @@
 <div class="container">
-    <div class="row pt-5">
-        <div class="col text-center">
-            <img src="/assets/logo kairos color-02.png" alt="logo" style="height: 150px;">
+    <div class="row pt-3 justify-content-center cartaLogin">
+        <div class="col col-12 col-lg-4 text-center backImgLogin align-self-center">
+            <img class="img-fluid imgLogin altoImg" src="/assets/logo kairos blanco-01.png" alt="logo">
         </div>
-    </div>
-    <div class="row pt-3">
-        <div class="col d-flex justify-content-center">
-            <div class="card" style="width: 23rem; background-color: #DCDBDD;">
+        <div class="col col-12 col-lg-5 justify-content-center align-self-center colLogin">
+            <div class="card cardLogin">
                 <div class="card-body">
                     <form [formGroup]="profileForm" (ngSubmit)="onSubmit()">
                         <div class="mb-3">
-                            <h1 class="text-center">Iniciar Sesión</h1>
-                            <label for="exampleInputEmail1" class="form-label">CI</label>
-                            <input type="number" class="form-control" formControlName="ci" [class]="validarCampo('ci')">
+                            <h1>Iniciar Sesión</h1>
+                            <div class="row justify-content-center">
+                                <div class="col col-12 col-md-6 col-lg-6">
+                                    <button class="btn btn-Google" (click)="iniciarGoogle()"><i class="fab fa-google"></i> Iniciar con Google</button>
+                                </div>
+                                <div class="col col-12 col-md-6 col-lg-6">
+                                    <button class="btn btn-Facebook" (click)="iniciarFacebook()"><i class="fab fa-facebook"></i> Iniciar con Facebook</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="exampleInputEmail1" class="form-label">C.I.</label>
+                            <input type="number" class="form-control inputNew" formControlName="ci" [class]="validarCampo('ci')">
 
                             <div *ngIf="profileForm.get('ci').invalid && (profileForm.get('ci').dirty || profileForm.get('ci').touched)">
                                 <div *ngIf="profileForm.get('ci').errors?.required" class="error">
@@ -23,9 +32,10 @@
                                 </div>
                             </div>
                         </div>
+                        
                         <div class="mb-3">
                             <label for="exampleInputPassword1" class="form-label">Contraseña</label>
-                            <input type="password" class="form-control" formControlName="password" [class]="validarCampo('password')">
+                            <input type="password" class="form-control inputNew" formControlName="password" [class]="validarCampo('password')">
                             
                             <div *ngIf="profileForm.get('password').invalid && (profileForm.get('password').dirty || profileForm.get('password').touched)">
                                 <div *ngIf="profileForm.get('password').errors?.required" class="error">
@@ -36,9 +46,12 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="d-flex justify-content-evenly">
-                            <a class="btn btn-main-login" aria-current="page" href="/registrarse">Registrarse</a>
-                            <button type="submit" [disabled]="!profileForm.valid" class="btn btn-main">Ingresar</button>
+                        
+                        <div class="row justify-content-center">
+                            <div class="col col-12 col-md-12 col-lg-12">
+                                <button type="submit" [disabled]="!profileForm.valid" class="btn btn-main btnNew">Ingresar</button>
+                                <p>¿No tienes una cuenta? <a href="/registrarse">Registrarse</a></p>
+                            </div>
                         </div>
                     </form>
                 </div>
@@ -46,4 +59,3 @@
         </div>
     </div>
 </div>
-<br><br><br>

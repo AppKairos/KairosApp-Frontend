@@ -1,6 +1,62 @@
-.logo {
-    padding-top: 50px;
-}
 .error {
     color: rgba(255,0,0,0.4);
+}
+
+.btn-Google {
+    background-color: white;
+    border: 1px groove rgba(0, 0, 0, 0.2);
+    border-radius: 20px;
+    color: #5D213B;
+    font-size: 16px;
+    margin: 5px;
+    width: 100%;
+}
+.btn-Facebook {
+    background-color: white;
+    border: 1px groove rgba(0, 0, 0, 0.2);
+    border-radius: 20px;
+    color: #385898;
+    font-size: 16px;
+    margin: 5px;
+    width: 100%;
+}
+.cardLogin {
+    border: none;
+}
+
+.btnRegistrarse {
+    background-color: white;
+    border: 2px solid #5D213B;
+    color: #5D213B;
+}
+.btnNew {
+    margin: 10px;
+    width: 100%;
+}
+.inputNew {
+    border: none;
+    border-bottom: 1px groove rgba(0, 0, 0, 0.2);
+    border-radius: 0px;
+}
+
+.imgLogin {
+    padding-top: 0px;
+    padding: 50px;
+}
+.backImgLogin {
+    background-color: #5D213B;
+}
+
+@media (max-width: 991px) {
+    .altoImg { 
+        padding-top: 50px;
+        padding-bottom: 50px;
+    }
+}
+
+@media (min-width: 992px) {  
+    .altoImg {
+        padding-top: 270px;
+        padding-bottom: 270px;
+    }
 }
