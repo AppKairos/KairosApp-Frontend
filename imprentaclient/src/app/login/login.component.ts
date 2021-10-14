@@ -1,5 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { FormGroup, FormControl } from '@angular/forms';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Observable, Subject } from 'rxjs';
 import { LoginService } from '../services/login.service';
 import { Usuario } from '../models/Usuario';
@@ -17,11 +17,17 @@ import { CabeceraService } from '../services/cabecera.service';
 export class LoginComponent implements OnInit, OnDestroy {
 
   profileForm = new FormGroup({
-    ci: new FormControl(),
-    password: new FormControl('')
+    ci: new FormControl(0,[
+      Validators.required,
+      Validators.pattern(new RegExp(/^[\d]{7,8}$/))
+    ]),
+    password: new FormControl('',[
+      Validators.required,
+      Validators.pattern(new RegExp(/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/))      
+    ])
   });
 
-  usuario: any;
+  //usuario: any;
 
   constructor(private loginService: LoginService, private cabeceraService: CabeceraService, private modalservice: NgbModal, private router: Router) { }
 
@@ -44,7 +50,13 @@ export class LoginComponent implements OnInit, OnDestroy {
       }
     });
   }
+
   logout(){
     this.cabeceraService.storeUser("vacio");
+  }
+
+  validarCampo(campo:string):string {
+    const campoValidado = this.profileForm.get(campo);
+    return (!campoValidado.valid && campoValidado.touched) ? 'is-invalid' : campoValidado.touched ? 'is-valid' : '';
   }
 }
