@@ -8,7 +8,7 @@
       <div class="row">
           <div class="col-12 col-lg-6 ">
             <div class="container1">
-              <img src="/assets/empastado.png" alt="photo1" style="height: 900px;">
+              <img class="imgEmpastado" src="/assets/empastado.png" alt="photo1" style="height: 900px;">
               <div class="facultad">{{facultad}}</div>
               <div class="carrera">{{carrera}}</div>
               <div class="titulo">{{titulo}}</div>
@@ -50,9 +50,23 @@
                           </div>
                           <div class="mb-3">
                             <div class="row">
-                              <div class="col-12 col-lg-6 " >
+                              <div class="col-12 col-lg-6">
                                 <label for="mes" class="form-label">Mes</label>
-                                <input type="text" class="form-control" id="mes" aria-describedby="mes" [(ngModel)]="mes">
+                                <select id="mes" class="form-select" [(ngModel)]="mes">
+                                  <option selected>Seleccione el mes</option>
+                                  <option value="Enero">Enero</option>
+                                  <option value="Febrero">Febrero</option>
+                                  <option value="Marzo">Marzo</option>
+                                  <option value="Abril">Abril</option>
+                                  <option value="Mayo">Mayo</option>
+                                  <option value="Junio">Junio</option>
+                                  <option value="Julio">Julio</option>
+                                  <option value="Agosto">Agosto</option>
+                                  <option value="Septiembre">Septiembre</option>
+                                  <option value="Octubre">Octubre</option>
+                                  <option value="Noviembre">Noviembre</option>
+                                  <option value="Diciembre">Diciembre</option>
+                                </select>
                               </div>
                               <div class="col-12 col-lg-6 " >
                                 <label for="anio" class="form-label">Año</label>

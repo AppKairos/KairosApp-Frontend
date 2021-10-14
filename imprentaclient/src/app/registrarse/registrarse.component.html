@@ -11,19 +11,65 @@
             <!--FORM-->
             <form [formGroup]="profileForm" (ngSubmit)="onSubmit()">
                 <label for="ci" class="form-label">C.I.</label>
-                <input type="number" class="form-control" id="ci" aria-describedby="ci" formControlName="ci">
+                <input type="number" class="form-control" formControlName="ci"  [class]="validarCampo('ci')">
+                
+                <div *ngIf="profileForm.get('ci').invalid && (profileForm.get('ci').dirty || profileForm.get('ci').touched)">
+                    <div *ngIf="profileForm.get('ci').errors?.required" class="error">
+                        Este campo es obligatorio.
+                    </div>
+                    <div *ngIf="profileForm.get('ci').errors?.pattern" class="error">
+                        Entre 7 y 8 caracteres, solo digitos
+                    </div>
+                </div>
 
                 <label for="nombre" class="form-label">Nombre Completo:</label>
-                <input type="text" class="form-control" id="nombre" aria-describedby="nombre" formControlName="nombre">
+                <input type="text" class="form-control" formControlName="nombre" [class]="validarCampo('nombre')">
+
+                <div *ngIf="profileForm.get('nombre').invalid && (profileForm.get('nombre').dirty || profileForm.get('nombre').touched)">
+                    <div *ngIf="profileForm.get('nombre').errors?.required" class="error">
+                        Este campo es obligatorio.
+                    </div>
+                    <div *ngIf="profileForm.get('nombre').errors?.pattern && !profileForm.get('nombre').errors?.required" class="error">
+                        Ingrese un nombre valido
+                    </div>
+                </div>
 
                 <label for="exampleInputEmail1" class="form-label">Correo Electrónico:</label>
-                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" formControlName="correo">
-                
+                <input type="text" class="form-control" formControlName="correo" [class]="validarCampo('correo')">
+
+                <div *ngIf="profileForm.get('correo').invalid && (profileForm.get('correo').dirty || profileForm.get('correo').touched)">
+                    <div *ngIf="profileForm.get('correo').errors?.required" class="error">
+                        Este campo es obligatorio.
+                    </div>
+                    <div *ngIf="profileForm.get('correo').errors?.pattern && !profileForm.get('correo').errors?.required" class="error">
+                        Ingrese un correo valido
+                    </div>
+                </div>
+
                 <label for="numero" class="form-label">Número de Teléfono:</label>
-                <input type="number" class="form-control" id="numero" aria-describedby="numero" formControlName="telefono">
+                <input type="number" class="form-control" formControlName="telefono" [class]="validarCampo('telefono')">
+
+                <div *ngIf="profileForm.get('telefono').invalid && (profileForm.get('telefono').dirty || profileForm.get('telefono').touched)">
+                    <div *ngIf="profileForm.get('telefono').errors?.required" class="error">
+                        Este campo es obligatorio.
+                    </div>
+                    <div *ngIf="profileForm.get('telefono').errors?.pattern && !profileForm.get('telefono').errors?.required" class="error">
+                        Ingrese un telefono valido
+                    </div>
+                </div>
+
                 <div class="mb-3">
                     <label for="exampleInputPassword1" class="form-label">Contraseña:</label>
-                    <input type="password" class="form-control" id="exampleInputPassword1" formControlName="password">
+                    <input type="password" class="form-control" formControlName="password"  [class]="validarCampo('password')">
+
+                    <div *ngIf="profileForm.get('password').invalid && (profileForm.get('password').dirty || profileForm.get('password').touched)">
+                        <div *ngIf="profileForm.get('password').errors?.required" class="error">
+                            Este campo es obligatorio.
+                        </div>
+                        <div *ngIf="profileForm.get('password').errors?.pattern && !profileForm.get('password').errors?.required" class="error">
+                            Minimo 8 caracteres, solo letras y digitos
+                        </div>
+                    </div>
                 </div>
                 <div class="d-grid gap-2">
                     <button type="submit" class="btn-main pt-2 pb-2" [disabled]="!profileForm.valid">Crear Cuenta</button>

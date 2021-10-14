@@ -92,3 +92,7 @@
     border: 1px solid rgba(0,0,0,0.2);
     font-size: 20px;
   }
+
+  .imgEmpastado {
+    border: 1px groove rgba(0,0,0,0.2)
+  }
