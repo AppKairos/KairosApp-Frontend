@@ -41,6 +41,7 @@ export class LoginComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.logout();
+    this.logoutGoogleFacebook();
 
     this.authService.authState.subscribe((user) => {
       this.socialUser = user;
