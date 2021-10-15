@@ -45,6 +45,7 @@
 }
 .backImgLogin {
     background-color: #5D213B;
+    border-radius: 3px;
 }
 
 @media (max-width: 991px) {
