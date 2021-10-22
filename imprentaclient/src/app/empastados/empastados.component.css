@@ -7,20 +7,22 @@
     text-align: center;
     font-weight: bolder;
     position: absolute;
-    top: 130px;
+    top: 140px;
     left: 58%;
     transform: translateX(-50%);
     overflow-x: hidden;
+    color: #efb810
   }
   
   .carrera {
     text-align: center;
     font-weight: bolder;
     position: absolute;
-    top: 185px;
+    top: 183px;
     left: 58%;
     transform: translateX(-50%);
     overflow-x: hidden;
+    color: #efb810
   }
   
   .titulo {
@@ -31,6 +33,7 @@
     left: 58%;
     transform: translateX(-50%);
     overflow-x: hidden;
+    color: #efb810
   }
   
   .trabajo {
@@ -41,16 +44,18 @@
     left: 58%;
     transform: translateX(-50%);
     overflow-x: hidden;
+    color: #efb810
   }
 
   .autor {
     text-align: center;
     font-weight: bolder;
     position: absolute;
-    top: 680px;
+    top: 681px;
     left: 58%;
     transform: translateX(-50%);
     overflow-x: hidden;
+    color: #efb810
   }
 
   .tutor {
@@ -61,27 +66,29 @@
     left: 58%;
     transform: translateX(-50%);
     overflow-x: hidden;
+    color: #efb810
   }
 
   .mes {
-    font-size: 7px;
     text-align: center;
     font-weight: bolder;
     position: absolute;
-    top: 804px;
-    left: 57%;
+    top: 801px;
+    left: 60%;
     transform: translateX(-50%);
     overflow-x: hidden;
+    color: #efb810
   }
 
   .anio {
     text-align: center;
     font-weight: bolder;
     position: absolute;
-    top: 799px;
-    left: 67%;
+    top: 801px;
+    left: 73%;
     transform: translateX(-50%);
     overflow-x: hidden;
+    color: #efb810
   }
 
   #precio {
@@ -94,5 +101,5 @@
   }
 
   .imgEmpastado {
-    border: 1px groove rgba(0,0,0,0.2)
+    border: 0px groove rgba(0,0,0,0.2)
   }
