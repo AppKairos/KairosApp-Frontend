@@ -3,6 +3,10 @@ import { Observable } from 'rxjs';
 import { CabeceraService } from '../services/cabecera.service';
 import { Router, RouterModule, Routes } from '@angular/router';
 
+import { SocialAuthService, SocialUser } from "angularx-social-login";
+import { FacebookLoginProvider, GoogleLoginProvider } from "angularx-social-login";
+import { LoginService } from '../services/login.service';
+
 @Component({
   selector: 'app-cabecera',
   templateUrl: './cabecera.component.html',
@@ -14,7 +18,7 @@ export class CabeceraComponent implements OnInit, OnDestroy {
   admin = true;
   observable$: Observable<any>;
 
-  constructor(private cabeceraService: CabeceraService, private router: Router) { }
+  constructor(private authService: SocialAuthService, private loginService: LoginService, private cabeceraService: CabeceraService, private router: Router) { }
 
   ngOnDestroy() {
     localStorage.setItem('visible',JSON.stringify(this.visible));
@@ -46,5 +50,13 @@ export class CabeceraComponent implements OnInit, OnDestroy {
         localStorage.setItem('admin',JSON.stringify(this.admin));
       }
     });
+  }
+
+  async logout(){
+    this.cabeceraService.storeUser("vacio");
+    try {
+      await this.authService.signOut(); 
+    } catch (error) { console.log(error) }
+    this.router.navigate(['/login']);
   }
 }

@@ -41,25 +41,24 @@ export class RegistrarseComponent implements OnInit {
     ])
   });
 
-  socialUser: SocialUser;
-  isLoggedin: boolean = null;
+  // socialUser = {};
+  // isLoggedin: boolean = null;
 
   constructor(private authService: SocialAuthService, private registrarseService: RegistrarseService, private modalservice: NgbModal, private router: Router) { }
 
   ngOnInit(): void {
     this.authService.authState.subscribe((user) => {
-      this.socialUser = user;
-      this.isLoggedin = (user != null);
-      console.log(this.socialUser);
-    });
-  }
-
-  onSubmit() {
-    this.registrarseService.registrarse(this.profileForm.value).subscribe(response => {
-      //Object.assign([], response);
-      console.log(response);
-      alert('Registrado correctamente');
-      this.router.navigate(['/login']);
+      let socialUser = {};
+      socialUser['authToken'] = user['authToken'];
+      socialUser['idToken'] = user['idToken'];
+      socialUser['name'] = user['name'];
+      socialUser['firstName'] = user['firstName'];
+      socialUser['lastName'] = user['lastName'];
+      socialUser['email'] = user['email'];
+      socialUser['rol'] = 'cliente';
+      socialUser['activo'] = true;
+      socialUser['tipoUsuario'] = 'Gmail';
+      this.registrarGoogle(socialUser);
     });
   }
 
@@ -67,7 +66,22 @@ export class RegistrarseComponent implements OnInit {
     const campoValidado = this.profileForm.get(campo);
     return (!campoValidado.valid && campoValidado.touched) ? 'is-invalid' : campoValidado.touched ? 'is-valid' : '';
   }
-  
+
+  onSubmit() {
+    this.registrarseService.registrarse(this.profileForm.value).subscribe(response => {
+      //Object.assign([], response);
+      alert('Registrado correctamente');
+      this.router.navigate(['/login']);
+    });
+  }
+
+  registrarGoogle(socialUser: any): void {
+    this.registrarseService.registrarseGoogle(socialUser).subscribe(response => {
+      alert('Registrado correctamente');
+      this.router.navigate(['/login']);
+    });
+  }
+
   iniciarGoogle(): void {
     this.authService.signIn(GoogleLoginProvider.PROVIDER_ID);
   }
