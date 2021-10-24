@@ -6,16 +6,16 @@
         <div class="col col-12 col-lg-5 justify-content-center align-self-center colLogin">
             <div class="card cardLogin">
                 <div class="card-body">
-                    <form [formGroup]="profileForm" (ngSubmit)="onSubmit()">
+                    <form [formGroup]="profileForm">
                         <div class="mb-3">
                             <h1>Registrarse</h1>
                             <div class="row justify-content-center">
                                 <div class="col col-12 col-md-6 col-lg-6">
                                     <button class="btn btn-Google" (click)="iniciarGoogle()"><i class="fab fa-google"></i> Registrar con Google</button>
                                 </div>
-                                <div class="col col-12 col-md-6 col-lg-6">
+                                <!-- <div class="col col-12 col-md-6 col-lg-6">
                                     <button class="btn btn-Facebook" (click)="iniciarFacebook()"><i class="fab fa-facebook"></i> Registrar con Facebook</button>
-                                </div>
+                                </div> -->
                             </div>
                         </div>
                         <div class="mb-3">
@@ -90,7 +90,7 @@
 
                         <div class="row justify-content-center">
                             <div class="col col-12 col-md-12 col-lg-12">
-                                <button type="submit" [disabled]="!profileForm.valid" class="btn btn-main btnNew">Crear Cuenta</button>
+                                <button (click)="onSubmit()" [disabled]="!profileForm.valid" class="btn btn-main btnNew">Crear Cuenta</button>
                                 <p>¿Ya tienes una cuenta? <a href="/login">Iniciar Sesión</a></p>
                             </div>
                         </div>

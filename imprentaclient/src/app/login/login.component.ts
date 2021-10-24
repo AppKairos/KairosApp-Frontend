@@ -31,8 +31,8 @@ export class LoginComponent implements OnInit, OnDestroy {
   });
 
   //usuario: any;
-  socialUser: SocialUser;
-  isLoggedin: boolean = null;
+  // socialUser = {};
+  // isLoggedin: boolean = null;
 
   constructor(private authService: SocialAuthService, private loginService: LoginService, private cabeceraService: CabeceraService, private modalservice: NgbModal, private router: Router) { }
 
@@ -40,18 +40,36 @@ export class LoginComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
-    this.logout();
-    this.logoutGoogleFacebook();
+    if(!(JSON.parse(localStorage.getItem('usuario'))["token"] == undefined)){
+      this.router.navigate(['/productos']);
+    }
 
     this.authService.authState.subscribe((user) => {
-      this.socialUser = user;
-      this.isLoggedin = (user != null);
-      console.log(this.socialUser);
+      // this.socialUser = user;
+      // this.isLoggedin = (user != null);
+      // console.log(this.socialUser);
+      if(user){
+        let socialUser = {};
+        socialUser['authToken'] = user['authToken'];
+        socialUser['idToken'] = user['idToken'];
+        socialUser['name'] = user['name'];
+        socialUser['firstName'] = user['firstName'];
+        socialUser['lastName'] = user['lastName'];
+        socialUser['email'] = user['email'];
+        socialUser['rol'] = 'cliente';
+        socialUser['activo'] = true;
+        socialUser['tipoUsuario'] = 'Gmail';
+        this.loginGoogle(socialUser);
+      }
     });
   }
 
+  validarCampo(campo:string):string {
+    const campoValidado = this.profileForm.get(campo);
+    return (!campoValidado.valid && campoValidado.touched) ? 'is-invalid' : campoValidado.touched ? 'is-valid' : '';
+  }
+
   onSubmit(): void {
-    console.log(this.profileForm.value);
     this.loginService.login(this.profileForm.value).subscribe(response => {
       if(response["token"]){
         alert('Usuario verificado');
@@ -63,17 +81,28 @@ export class LoginComponent implements OnInit, OnDestroy {
     });
   }
 
-  logout(){
-    this.cabeceraService.storeUser("vacio");
-  }
-
-  validarCampo(campo:string):string {
-    const campoValidado = this.profileForm.get(campo);
-    return (!campoValidado.valid && campoValidado.touched) ? 'is-invalid' : campoValidado.touched ? 'is-valid' : '';
-  }
+  // logout(){
+  //   this.cabeceraService.storeUser("vacio");
+  //   this.router.navigate(['/productos']);
+  // }
 
   iniciarGoogle(): void {
     this.authService.signIn(GoogleLoginProvider.PROVIDER_ID);
+  }
+
+  loginGoogle(usuarioGoogleLogin: any): void {
+    this.loginService.loginGoogle(usuarioGoogleLogin).subscribe(response => {
+      if(!(response["authToken"] === "")){
+        let usuario = {};
+        usuario['token'] = response['authToken'];
+        usuario['usuario'] = response;
+        alert('Usuario verificado');
+        this.cabeceraService.storeUser(usuario);
+        this.router.navigate(['/productos']);
+      }else{
+        this.cabeceraService.storeUser('vacio');
+      }
+    });
   }
 
   iniciarFacebook(): void {

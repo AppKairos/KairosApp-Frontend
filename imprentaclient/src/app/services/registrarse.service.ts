@@ -28,4 +28,9 @@ export class RegistrarseService {
   registrarse(usuarioRegistrarse: any): Observable<Response>{
     return this.http.post<Response>(this.myAppUrl + this.myApiUrl + 'register', usuarioRegistrarse, this.httpOptions);
   }
+
+  registrarseGoogle(usuarioRegistrarseGoogle: any): Observable<Response>{
+    console.log(usuarioRegistrarseGoogle);
+    return this.http.post<Response>(this.myAppUrl + this.myApiUrl + 'register/gmail', usuarioRegistrarseGoogle, this.httpOptions);
+  }
 }
