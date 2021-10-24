@@ -10,6 +10,7 @@ import { EmpastadosComponent } from './empastados/empastados.component';
 import { GuardiaLoginService } from './services/guardia-login.service';
 import { GuardiaAdminService } from './services/guardia-admin.service';
 import { GuardiaNoLoginService } from './services/guardia-no-login.service';
+import { ReservaComponent } from './reserva/reserva.component';
 
 const routes: Routes = [
   { path:'inicio', component: InicioComponent, pathMatch: 'full' },
@@ -19,6 +20,7 @@ const routes: Routes = [
   { path:'registrarse', component: RegistrarseComponent, pathMatch: 'full', canActivate: [GuardiaNoLoginService] },
   { path:'cotizaciones', component: CotizacionesComponent, pathMatch: 'full', canActivate: [GuardiaLoginService,GuardiaAdminService] },
   { path:'empastados', component: EmpastadosComponent, pathMatch: 'full' },
+  { path:'reserva', component: ReservaComponent, pathMatch: 'full', canActivate: [GuardiaLoginService,GuardiaAdminService] },
   { path:'**', redirectTo: '/inicio' }
 ];
 

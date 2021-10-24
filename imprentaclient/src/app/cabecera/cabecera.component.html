@@ -16,8 +16,8 @@
               <li class="nav-item" *ngIf="admin">
                 <a class="nav-link active" href="/cotizaciones">Cotizaciones</a>
               </li>
-              <li class="nav-item">
-                <a class="nav-link disabled" href="/reservas" tabindex="-1" aria-disabled="true">Reservas</a>
+              <li class="nav-item" *ngIf="admin">
+                <a class="nav-link active" href="/reserva">Reservas</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link disabled" href="/clientes" tabindex="-1" aria-disabled="true">Clientes</a>
