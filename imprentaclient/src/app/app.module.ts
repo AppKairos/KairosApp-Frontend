@@ -26,6 +26,7 @@ import { CabeceraService } from './services/cabecera.service';
 import { LoginService } from './services/login.service';
 import { SelloService } from './services/sello.service';
 import { ReservaComponent } from './reserva/reserva.component';
+import { PreciosComponent } from './precios/precios.component';
 
 @NgModule({
   declarations: [
@@ -39,7 +40,8 @@ import { ReservaComponent } from './reserva/reserva.component';
     CotizacionesComponent,
     EmpastadosComponent,
     CabeceraComponent,
-    ReservaComponent
+    ReservaComponent,
+    PreciosComponent
   ],
   imports: [
     BrowserModule,
