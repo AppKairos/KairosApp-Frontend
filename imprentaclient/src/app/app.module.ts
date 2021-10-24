@@ -25,6 +25,7 @@ import { AfichesService } from './services/afiches.service';
 import { CabeceraService } from './services/cabecera.service';
 import { LoginService } from './services/login.service';
 import { SelloService } from './services/sello.service';
+import { PreciosComponent } from './precios/precios.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +38,8 @@ import { SelloService } from './services/sello.service';
     RegistrarseComponent,
     CotizacionesComponent,
     EmpastadosComponent,
-    CabeceraComponent
+    CabeceraComponent,
+    PreciosComponent
   ],
   imports: [
     BrowserModule,
