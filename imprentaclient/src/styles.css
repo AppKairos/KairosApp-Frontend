@@ -33,5 +33,5 @@ body{
 }
 *{
     font-family: 'Poppins', sans-serif;
-    transition: 0.5;
+    transition: 0.5 ease-in-out all;
 }

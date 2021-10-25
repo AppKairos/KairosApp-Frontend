@@ -7,34 +7,62 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-4 col-lg-2 pb-3">
-                <p class="btn btn-main">Bond</p>
+            <div class="col-4 col-xl-2 col-lg-2 col-md-2 col-sm-4 pb-3">
+                <img src="../assets/adhesivo.jpeg" class="imagen img-fluid" (click)="getPreciosAdhesivo()">
+                <div class="textoImg">Adhesivo</div>
             </div>
-            <div class="col-4 col-lg-2 pb-3">
-                <p class="btn btn-main">Couche</p>
+            <div class="col-4 col-xl-2 col-lg-2 col-md-2 col-sm-4 pb-3">
+                <img src="../assets/bond.jpeg" class="imagen img-fluid" (click)="getPreciosBond()">
+                <div class="textoImg">Bond</div>
             </div>
-            <div class="col-4 col-lg-2 pb-3">
-                <p class="btn btn-main">Copia</p>
+            <div class="col-4 col-xl-2 col-lg-2 col-md-2 col-sm-4 pb-3">
+                <img src="../assets/cartulina.jpeg" class="imagen img-fluid" (click)="getPreciosCartulina()">
+                <div class="textoImg">Cartulina</div>
             </div>
-            <div class="col-4 col-lg-2 pb-3">
-                <p class="btn btn-main">Químico</p>
+            <div class="col-4 col-xl-2 col-lg-2 col-md-2 col-sm-4 pb-3">
+                <img src="../assets/hilada.jpeg" class="imagen img-fluid" (click)="getPreciosCartulinaHilada()">
+                <div class="textoImg">Cartulina Hilada</div>
             </div>
-            <div class="col-4 col-lg-2 pb-3">
-                <p class="btn btn-main">Duplex</p>
+            <div class="col-4 col-xl-2 col-lg-2 col-md-2 col-sm-4 pb-3">
+                <img src="../assets/copia.jpeg" class="imagen img-fluid" (click)="getPreciosCopia()">
+                <div class="textoImg">Copia</div>
             </div>
-            <div class="col-4 col-lg-2 pb-3">
-                <p class="btn btn-main">Triplex</p>
+            <div class="col-4 col-xl-2 col-lg-2 col-md-2 col-sm-4 pb-3">
+                <img src="../assets/couche.jpeg" class="imagen img-fluid" (click)="getPreciosCouche()">
+                <div class="textoImg">Couche</div>
+            </div>
+            <div class="col-4 col-xl-2 col-lg-2 col-md-2 col-sm-4 pb-3">
+                <img src="../assets/duplex.jpeg" class="imagen img-fluid" (click)="getPreciosDuplex()">
+                <div class="textoImg">Duplex</div>
+            </div>
+            <div class="col-4 col-xl-2 col-lg-2 col-md-2 col-sm-4 pb-3">
+                <img src="../assets/hueso.jpeg" class="imagen img-fluid" (click)="getPreciosPapelHueso()">
+                <div class="textoImg">Papel Hueso</div>
+            </div>
+            <div class="col-4 col-xl-2 col-lg-2 col-md-2 col-sm-4 pb-3">
+                <img src="../assets/quimico.jpeg" class="imagen img-fluid" (click)="getPreciosQuimico()">
+                <div class="textoImg">Quimico</div>
+            </div>
+            <div class="col-4 col-xl-2 col-lg-2 col-md-2 col-sm-4 pb-3">
+                <img src="../assets/sabana.jpeg" class="imagen img-fluid" (click)="getPreciosSabana()">
+                <div class="textoImg">Sabana</div>
+            </div>
+            <div class="col-4 col-xl-2 col-lg-2 col-md-2 col-sm-4 pb-3">
+                <img src="../assets/triplex.jpeg" class="imagen img-fluid" (click)="getPreciosTriplex()">
+                <div class="textoImg">Triplex</div>
             </div>
         </div>
     </div>
-  </section>
-  <section class="mt-5">
+</section>
+
+<section class="mt-5">
     <div class="container">
         <div class="row">
-            <div class="col-3 col-lg-1">
+            <!-- <div class="col">
                 <div class="dropdown">
-                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-                      Filtrar
+                    <button class="btn btn-secondary dropdown-toggle filtrar" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                        <i class="fas fa-filter filtrarIcono"></i>
+                        Filtrar
                     </button>
                     <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
                       <li><a class="dropdown-item" href="#">Opción 1</a></li>
@@ -42,9 +70,12 @@
                       <li><a class="dropdown-item" href="#">Opción 3</a></li>
                     </ul>
                 </div>
+            </div> -->
+            <div class="col col-xl-5 col-lg-5 col-md-5 col-sm-5">
+                <input class="form-control buscar" type="search" placeholder="Buscar" aria-label="Search">
             </div>
-            <div class="col col-lg-5">
-                <input class="form-control" type="search" placeholder="Buscar" aria-label="Search">
+            <div class="col col-xl-1 col-lg-1 col-md-2 col-sm-2">
+                <button class="form-control"><i class="fas fa-search"></i></button>
             </div>
         </div>
     </div>
@@ -53,74 +84,259 @@
     <div class="container">
         <div class="row">
             <div class="col">
-                <table class="table table-striped">
-                    <thead>
-                      <tr>
-                        <th scope="col">Gramaje</th>
-                        <th scope="col">Tamaño cm</th>
-                        <th scope="col">Pliegos</th>
-                        <th scope="col">Resma Bs</th>
-                        <th scope="col">Precio Unitario Bs</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr>
-                        <th scope="row">Bond 63</th>
-                        <td>87x67</td>
-                        <td>500</td>
-                        <td>210</td>
-                        <td>0,42</td>
-                      </tr>
-                      <tr>
-                        <th scope="row">Bond 75</th>
-                        <td>87x67</td>
-                        <td>500</td>
-                        <td>260</td>
-                        <td>0,52</td>
-                      </tr>
-                      <tr>
-                        <th scope="row">Bond 90</th>
-                        <td>87x67</td>
-                        <td>250</td>
-                        <td>180</td>
-                        <td>0,72</td>
-                      </tr>
-                      <tr>
-                        <th scope="row">Bond 118</th>
-                        <td>87x67</td>
-                        <td>250</td>
-                        <td>220</td>
-                        <td>0,88</td>
-                      </tr>
-                    </tbody>
-                  </table>
+                <div class="table-responsive">
+                    <table class="table table-hover table-sm">
+                        <thead class="tableHead">
+                          <tr class="tableHead">
+                            <th scope="col" class="tableHead">Gramaje</th>
+                            <th scope="col" class="tableHead">Tamaño cm</th>
+                            <th scope="col" class="tableHead">Pliegos</th>
+                            <th scope="col" class="tableHead">Resma Bs</th>
+                            <th scope="col" class="tableHead">Precio Unitario</th>
+                            <th scope="col" class="tableHead">Acciones</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr *ngFor="let precio of precios">
+                            <td>{{ precio.nombre }} {{ precio.tipo }}</td>
+                            <td>{{ precio.tam }}</td>
+                            <td>{{ precio.pliegos }}</td>
+                            <td>{{ precio.precioresma }} Bs.</td>
+                            <td>{{ precio.precioneto }} Bs.</td>
+                            <td>
+                                <i class="fas fa-edit accionEditar" (click)="openModalUpdatePrecio(udpatePrecioModal,precio.id)"></i>
+                                <i class="fas fa-trash accionEliminar" (click)="openModalDeletePrecio(deletePrecioModal,precio.id,precio.nombre)"></i>
+                            </td>
+                          </tr>
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
     </div>
-  </section>
-  <section class="m-4">
+</section>
+<section class="mt-4">
     <div class="container">
         <div class="row">
-            <div class="col-3">
-                <button class="btn btn-main-login">
-                    <p>Agregar Gramaje</p>
-                </button>
-            </div>
-            <div class="col-3">
-                <button class="btn btn-main-login">
-                    <p>Actualizar</p>
-                </button>
-            </div>
-            <div class="col-3">
-                <button class="btn btn-main-login">
-                    <p>Editar</p>
-                </button>
-            </div>
-            <div class="col-3">
-                <button class="btn btn-main-login">
-                    <p>Eliminar</p>
+            <div class="col-12 col-lg-4 col-md-4 col-sm-4">
+                <button class="btn btn-main-login m-1" (click)="openModalAddPrecio(addPrecioModal)">
+                    <i class="fas fa-plus-circle"></i>
+                    Agregar
                 </button>
             </div>
         </div>
     </div>
-  </section>
+</section>
+
+<ng-template #addPrecioModal let-modal>
+    <i class="fas fa-times-circle cerrar" (click)="modal.dismiss()"></i>
+
+    <form [formGroup]="addPrecioForm" class="m-5">
+        <div class="mb-3">
+            <h1>Agregar Precio</h1>
+        </div>
+        <div class="mb-3">
+            <label for="nombre" class="form-label">Nombre</label>
+            <input type="text" class="form-control inputNew" formControlName="nombre" [class]="validarCampoAddPrecioForm('nombre')">
+            
+            <div *ngIf="addPrecioForm.get('nombre').invalid && (addPrecioForm.get('nombre').dirty || addPrecioForm.get('nombre').touched)">
+                <div *ngIf="addPrecioForm.get('nombre').errors?.required" class="error">
+                    Este campo es obligatorio.
+                </div>
+                <div *ngIf="addPrecioForm.get('nombre').errors?.pattern" class="error">
+                    Solo letras y espacios.
+                </div>
+            </div>
+        </div>
+
+        <div class="mb-3">
+            <label for="precioneto" class="form-label">Precio neto</label>
+            <input type="text" class="form-control inputNew" formControlName="precioneto" [class]="validarCampoAddPrecioForm('precioneto')">
+
+            <div *ngIf="addPrecioForm.get('precioneto').invalid && (addPrecioForm.get('precioneto').dirty || addPrecioForm.get('precioneto').touched)">
+                <div *ngIf="addPrecioForm.get('precioneto').errors?.required" class="error">
+                    Este campo es obligatorio.
+                </div>
+                <div *ngIf="addPrecioForm.get('precioneto').errors?.pattern && !addPrecioForm.get('precioneto').errors?.required" class="error">
+                    Solo numeros con decimales.
+                </div>
+            </div>
+        </div>
+
+        <div class="mb-3">
+            <label for="tipo" class="form-label">Tipo</label>
+            <input type="text" class="form-control inputNew" formControlName="tipo" [class]="validarCampoAddPrecioForm('tipo')">
+
+            <div *ngIf="addPrecioForm.get('tipo').invalid && (addPrecioForm.get('tipo').dirty || addPrecioForm.get('tipo').touched)">
+                <div *ngIf="addPrecioForm.get('tipo').errors?.required" class="error">
+                    Este campo es obligatorio.
+                </div>
+                <div *ngIf="addPrecioForm.get('tipo').errors?.pattern && !addPrecioForm.get('tipo').errors?.required" class="error">
+                    Solo letras, numeros y espacios.
+                </div>
+            </div>
+        </div>
+
+        <div class="mb-3">
+            <label for="tam" class="form-label">Tamno</label>
+            <input type="text" class="form-control inputNew" formControlName="tam" [class]="validarCampoAddPrecioForm('tam')">
+
+            <div *ngIf="addPrecioForm.get('tam').invalid && (addPrecioForm.get('tam').dirty || addPrecioForm.get('tam').touched)">
+                <div *ngIf="addPrecioForm.get('tam').errors?.required" class="error">
+                    Este campo es obligatorio.
+                </div>
+                <div *ngIf="addPrecioForm.get('tam').errors?.pattern && !addPrecioForm.get('tam').errors?.required" class="error">
+                    Solo letras, numeros y espacios.
+                </div>
+            </div>
+        </div>
+
+        <div class="mb-3">
+            <label for="precioresma" class="form-label">Precio resma</label>
+            <input type="text" class="form-control inputNew" formControlName="precioresma" [class]="validarCampoAddPrecioForm('precioresma')">
+
+            <div *ngIf="addPrecioForm.get('precioresma').invalid && (addPrecioForm.get('precioresma').dirty || addPrecioForm.get('precioresma').touched)">
+                <div *ngIf="addPrecioForm.get('precioresma').errors?.required" class="error">
+                    Este campo es obligatorio.
+                </div>
+                <div *ngIf="addPrecioForm.get('precioresma').errors?.pattern && !addPrecioForm.get('precioresma').errors?.required" class="error">
+                    Solo numeros mayores a 0.
+                </div>
+            </div>
+        </div>
+
+        <div class="mb-3">
+            <label for="pliegos" class="form-label">Pliegos</label>
+            <input type="text" class="form-control inputNew" formControlName="pliegos" [class]="validarCampoAddPrecioForm('pliegos')">
+
+            <div *ngIf="addPrecioForm.get('pliegos').invalid && (addPrecioForm.get('pliegos').dirty || addPrecioForm.get('pliegos').touched)">
+                <div *ngIf="addPrecioForm.get('pliegos').errors?.required" class="error">
+                    Este campo es obligatorio.
+                </div>
+                <div *ngIf="addPrecioForm.get('pliegos').errors?.pattern && !addPrecioForm.get('pliegos').errors?.required" class="error">
+                    Solo numeros mayores a 0.
+                </div>
+            </div>
+        </div>
+
+        <div class="row justify-content-center">
+            <div class="col col-12 col-md-12 col-lg-12">
+                <button (click)="addPrecio()" [disabled]="!addPrecioForm.valid" class="btn btn-main btnNew">Agregar Precio</button>
+            </div>
+        </div>
+    </form>
+</ng-template>
+
+<ng-template #udpatePrecioModal let-modal>
+    <i class="fas fa-times-circle cerrar" (click)="modal.dismiss()"></i>
+
+    <form [formGroup]="updatePrecioForm" class="m-5">
+        <div class="mb-3">
+            <h1>Editar Precio</h1>
+        </div>
+        <div class="mb-3">
+            <label for="nombre" class="form-label">Nombre</label>
+            <input type="text" class="form-control inputNew" formControlName="nombre" [class]="validarCampoUpdatePrecioForm('nombre')">
+            
+            <div *ngIf="updatePrecioForm.get('nombre').invalid && (updatePrecioForm.get('nombre').dirty || updatePrecioForm.get('nombre').touched)">
+                <div *ngIf="updatePrecioForm.get('nombre').errors?.required" class="error">
+                    Este campo es obligatorio.
+                </div>
+                <div *ngIf="updatePrecioForm.get('nombre').errors?.pattern" class="error">
+                    Solo letras y espacios.
+                </div>
+            </div>
+        </div>
+
+        <div class="mb-3">
+            <label for="precioneto" class="form-label">Precio neto</label>
+            <input type="text" class="form-control inputNew" formControlName="precioneto" [class]="validarCampoUpdatePrecioForm('precioneto')">
+
+            <div *ngIf="updatePrecioForm.get('precioneto').invalid && (updatePrecioForm.get('precioneto').dirty || updatePrecioForm.get('precioneto').touched)">
+                <div *ngIf="updatePrecioForm.get('precioneto').errors?.required" class="error">
+                    Este campo es obligatorio.
+                </div>
+                <div *ngIf="updatePrecioForm.get('precioneto').errors?.pattern && !updatePrecioForm.get('precioneto').errors?.required" class="error">
+                    Solo numeros con decimales.
+                </div>
+            </div>
+        </div>
+
+        <div class="mb-3">
+            <label for="tipo" class="form-label">Tipo</label>
+            <input type="text" class="form-control inputNew" formControlName="tipo" [class]="validarCampoUpdatePrecioForm('tipo')">
+
+            <div *ngIf="updatePrecioForm.get('tipo').invalid && (updatePrecioForm.get('tipo').dirty || updatePrecioForm.get('tipo').touched)">
+                <div *ngIf="updatePrecioForm.get('tipo').errors?.required" class="error">
+                    Este campo es obligatorio.
+                </div>
+                <div *ngIf="updatePrecioForm.get('tipo').errors?.pattern && !updatePrecioForm.get('tipo').errors?.required" class="error">
+                    Solo letras, numeros y espacios.
+                </div>
+            </div>
+        </div>
+
+        <div class="mb-3">
+            <label for="tam" class="form-label">Tamno</label>
+            <input type="text" class="form-control inputNew" formControlName="tam" [class]="validarCampoUpdatePrecioForm('tam')">
+
+            <div *ngIf="updatePrecioForm.get('tam').invalid && (updatePrecioForm.get('tam').dirty || updatePrecioForm.get('tam').touched)">
+                <div *ngIf="updatePrecioForm.get('tam').errors?.required" class="error">
+                    Este campo es obligatorio.
+                </div>
+                <div *ngIf="updatePrecioForm.get('tam').errors?.pattern && !updatePrecioForm.get('tam').errors?.required" class="error">
+                    Solo letras, numeros y espacios.
+                </div>
+            </div>
+        </div>
+
+        <div class="mb-3">
+            <label for="precioresma" class="form-label">Precio resma</label>
+            <input type="text" class="form-control inputNew" formControlName="precioresma" [class]="validarCampoUpdatePrecioForm('precioresma')">
+
+            <div *ngIf="updatePrecioForm.get('precioresma').invalid && (updatePrecioForm.get('precioresma').dirty || updatePrecioForm.get('precioresma').touched)">
+                <div *ngIf="updatePrecioForm.get('precioresma').errors?.required" class="error">
+                    Este campo es obligatorio.
+                </div>
+                <div *ngIf="updatePrecioForm.get('precioresma').errors?.pattern && !updatePrecioForm.get('precioresma').errors?.required" class="error">
+                    Solo numeros mayores a 0.
+                </div>
+            </div>
+        </div>
+
+        <div class="mb-3">
+            <label for="pliegos" class="form-label">Pliegos</label>
+            <input type="text" class="form-control inputNew" formControlName="pliegos" [class]="validarCampoUpdatePrecioForm('pliegos')">
+
+            <div *ngIf="updatePrecioForm.get('pliegos').invalid && (updatePrecioForm.get('pliegos').dirty || updatePrecioForm.get('pliegos').touched)">
+                <div *ngIf="updatePrecioForm.get('pliegos').errors?.required" class="error">
+                    Este campo es obligatorio.
+                </div>
+                <div *ngIf="updatePrecioForm.get('pliegos').errors?.pattern && !updatePrecioForm.get('pliegos').errors?.required" class="error">
+                    Solo numeros mayores a 0.
+                </div>
+            </div>
+        </div>
+
+        <div class="row justify-content-center">
+            <div class="col col-12 col-md-12 col-lg-12">
+                <button (click)="updatePrecio()" class="btn btn-main btnNew">Guardar Cambios</button>
+            </div>
+        </div>
+    </form>
+</ng-template>
+
+<ng-template #deletePrecioModal let-modal>
+    <i class="fas fa-times-circle cerrar" (click)="modal.dismiss()"></i>
+
+    <form class="m-5">
+        <div class="mb-3">
+            <h3>Desea eliminar el precio?</h3>
+        </div>
+        <div class="row justify-content-center">
+            <div class="col col-12 col-md-12 col-lg-12">
+                <button (click)="deletePrecio()" class="btn btn-danger">Eliminar</button>
+            </div>
+        </div>
+    </form>
+</ng-template>

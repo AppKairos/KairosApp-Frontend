@@ -6,6 +6,7 @@ import { FormGroup, FormBuilder, FormControl} from '@angular/forms';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { NgModule } from '@angular/core';
 import { Router, RouterModule, Routes } from '@angular/router';
+import { PrecioService } from '../services/precio.service';
 
 @Component({
   selector: 'app-cotizaciones',
@@ -26,14 +27,16 @@ export class CotizacionesComponent implements OnInit {
     ganancia: new FormControl()
   });
 
+  precios = [];
   sinFactura = 0;
   conFactura = 0;
   iva = 0;
   total = 0;
 
-  constructor(private afichesService: AfichesService) { }
+  constructor(private afichesService: AfichesService, private precioService: PrecioService) { }
 
   ngOnInit(): void {
+    this.getPrecios();
   }
   
   cotizarAfiche(){
@@ -46,5 +49,9 @@ export class CotizacionesComponent implements OnInit {
       this.iva = responseJSON.iva;
       this.total = responseJSON.total;
     });
+  }
+
+  getPrecios(){
+    // this.precioService().subscribe();
   }
 }

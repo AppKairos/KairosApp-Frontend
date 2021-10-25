@@ -11,6 +11,7 @@ import { GuardiaLoginService } from './services/guardia-login.service';
 import { GuardiaAdminService } from './services/guardia-admin.service';
 import { GuardiaNoLoginService } from './services/guardia-no-login.service';
 import { ReservaComponent } from './reserva/reserva.component';
+import { PreciosComponent } from './precios/precios.component';
 
 const routes: Routes = [
   { path:'inicio', component: InicioComponent, pathMatch: 'full' },
@@ -21,6 +22,7 @@ const routes: Routes = [
   { path:'cotizaciones', component: CotizacionesComponent, pathMatch: 'full', canActivate: [GuardiaLoginService,GuardiaAdminService] },
   { path:'empastados', component: EmpastadosComponent, pathMatch: 'full' },
   { path:'reserva', component: ReservaComponent, pathMatch: 'full', canActivate: [GuardiaLoginService,GuardiaAdminService] },
+  { path:'precios', component: PreciosComponent, pathMatch: 'full', canActivate: [GuardiaLoginService,GuardiaAdminService] },
   { path:'**', redirectTo: '/inicio' }
 ];
 
