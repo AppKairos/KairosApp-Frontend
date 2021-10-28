@@ -13,6 +13,19 @@ import { ReactiveFormsModule } from '@angular/forms';
 })
 export class PreciosComponent implements OnInit {
 
+  imgAdhesivo = null;
+  imgBond = null;
+  imgCartulina = null;
+  imgCartulinaHilada = null;
+  imgCopia = null;
+  imgCouche = null;
+  imgDuplex = null;
+  imgPapelHueso = null;
+  imgQuimico = null;
+  imgSabana = null;
+  imgTriplex = null;
+  nombrePrecio = null;
+
   addPrecioForm = new FormGroup({
     nombre: new FormControl('',[
       Validators.required,
@@ -68,6 +81,17 @@ export class PreciosComponent implements OnInit {
   constructor(private precioService: PrecioService, private modalservice: NgbModal) { }
 
   ngOnInit(): void {
+    this.imgAdhesivo = document.getElementById('imgAdhesivo');
+    this.imgBond = document.getElementById('imgBond');
+    this.imgCartulina = document.getElementById('imgCartulina');
+    this.imgCartulinaHilada = document.getElementById('imgCartulinaHilada');
+    this.imgCopia = document.getElementById('imgCopia');
+    this.imgCouche = document.getElementById('imgCouche');
+    this.imgDuplex = document.getElementById('imgDuplex');
+    this.imgPapelHueso = document.getElementById('imgPapelHueso');
+    this.imgQuimico = document.getElementById('imgQuimico');
+    this.imgSabana = document.getElementById('imgSabana');
+    this.imgTriplex = document.getElementById('imgTriplex');
   }
 
   addPrecio() {
@@ -189,16 +213,14 @@ export class PreciosComponent implements OnInit {
 
   openModalAddPrecio(targetModal){
     this.modalservice.open(targetModal, {
-      centered: true,
-      backdrop: 'static'
-    });     
+      centered: true
+    });
   }
 
   openModalUpdatePrecio(targetModal, id: number){
     this.idPrecio = id;
     this.modalservice.open(targetModal, {
-      centered: true,
-      backdrop: 'static'
+      centered: true
     });
   }
   
@@ -206,18 +228,45 @@ export class PreciosComponent implements OnInit {
     this.idPrecio = id;
     this.nombre = nombre;
     this.modalservice.open(targetModal, {
-      centered: true,
-      backdrop: 'static'
+      centered: true
     });
   }
 
   getPreciosAdhesivo() {
+    this.imgAdhesivo.classList.toggle('active',true);
+    this.imgBond.classList.toggle('active',false);
+    this.imgCartulina.classList.toggle('active',false);
+    this.imgCartulinaHilada.classList.toggle('active',false);
+    this.imgCopia.classList.toggle('active',false);
+    this.imgCouche.classList.toggle('active',false);
+    this.imgDuplex.classList.toggle('active',false);
+    this.imgPapelHueso.classList.toggle('active',false);
+    this.imgQuimico.classList.toggle('active',false);
+    this.imgSabana.classList.toggle('active',false);
+    this.imgTriplex.classList.toggle('active',false);
+
+    this.nombrePrecio = 'Adhesivo';
+
     this.precioService.getPreciosAdhesivo().subscribe(response => {
       this.precios = Object.assign([], response);
     });    
   }
 
   getPreciosBond() {
+    this.imgAdhesivo.classList.toggle('active',false);
+    this.imgBond.classList.toggle('active',true);
+    this.imgCartulina.classList.toggle('active',false);
+    this.imgCartulinaHilada.classList.toggle('active',false);
+    this.imgCopia.classList.toggle('active',false);
+    this.imgCouche.classList.toggle('active',false);
+    this.imgDuplex.classList.toggle('active',false);
+    this.imgPapelHueso.classList.toggle('active',false);
+    this.imgQuimico.classList.toggle('active',false);
+    this.imgSabana.classList.toggle('active',false);
+    this.imgTriplex.classList.toggle('active',false);
+
+    this.nombrePrecio = 'Bond';
+
     this.precioService.getPreciosBond().subscribe(response => {
       console.log(response);
       this.precios = Object.assign([], response);
@@ -225,54 +274,180 @@ export class PreciosComponent implements OnInit {
   }
 
   getPreciosCartulina() {
+    this.imgAdhesivo.classList.toggle('active',false);
+    this.imgBond.classList.toggle('active',false);
+    this.imgCartulina.classList.toggle('active',true);
+    this.imgCartulinaHilada.classList.toggle('active',false);
+    this.imgCopia.classList.toggle('active',false);
+    this.imgCouche.classList.toggle('active',false);
+    this.imgDuplex.classList.toggle('active',false);
+    this.imgPapelHueso.classList.toggle('active',false);
+    this.imgQuimico.classList.toggle('active',false);
+    this.imgSabana.classList.toggle('active',false);
+    this.imgTriplex.classList.toggle('active',false);
+
+    this.nombrePrecio = 'Cartulina';
+
     this.precioService.getPreciosCartulina().subscribe(response => {
       this.precios = Object.assign([], response);
     });
   }
 
   getPreciosCartulinaHilada() {
+    this.imgAdhesivo.classList.toggle('active',false);
+    this.imgBond.classList.toggle('active',false);
+    this.imgCartulina.classList.toggle('active',false);
+    this.imgCartulinaHilada.classList.toggle('active',true);
+    this.imgCopia.classList.toggle('active',false);
+    this.imgCouche.classList.toggle('active',false);
+    this.imgDuplex.classList.toggle('active',false);
+    this.imgPapelHueso.classList.toggle('active',false);
+    this.imgQuimico.classList.toggle('active',false);
+    this.imgSabana.classList.toggle('active',false);
+    this.imgTriplex.classList.toggle('active',false);
+
+    this.nombrePrecio = 'Cartulina Hilada';
+
     this.precioService.getPreciosCartulinaHilada().subscribe(response => {
       this.precios = Object.assign([], response);
     });
   }
 
   getPreciosCopia() {
+    this.imgAdhesivo.classList.toggle('active',false);
+    this.imgBond.classList.toggle('active',false);
+    this.imgCartulina.classList.toggle('active',false);
+    this.imgCartulinaHilada.classList.toggle('active',false);
+    this.imgCopia.classList.toggle('active',true);
+    this.imgCouche.classList.toggle('active',false);
+    this.imgDuplex.classList.toggle('active',false);
+    this.imgPapelHueso.classList.toggle('active',false);
+    this.imgQuimico.classList.toggle('active',false);
+    this.imgSabana.classList.toggle('active',false);
+    this.imgTriplex.classList.toggle('active',false);
+
+    this.nombrePrecio = 'Copia';
+
     this.precioService.getPreciosCopia().subscribe(response => {
       this.precios = Object.assign([], response);
     });
   }
 
   getPreciosCouche() {
+    this.imgAdhesivo.classList.toggle('active',false);
+    this.imgBond.classList.toggle('active',false);
+    this.imgCartulina.classList.toggle('active',false);
+    this.imgCartulinaHilada.classList.toggle('active',false);
+    this.imgCopia.classList.toggle('active',false);
+    this.imgCouche.classList.toggle('active',true);
+    this.imgDuplex.classList.toggle('active',false);
+    this.imgPapelHueso.classList.toggle('active',false);
+    this.imgQuimico.classList.toggle('active',false);
+    this.imgSabana.classList.toggle('active',false);
+    this.imgTriplex.classList.toggle('active',false);
+
+    this.nombrePrecio = 'Couche';
+
     this.precioService.getPreciosCouche().subscribe(response => {
       this.precios = Object.assign([], response);
     });
   }
 
   getPreciosDuplex() {
+    this.imgAdhesivo.classList.toggle('active',false);
+    this.imgBond.classList.toggle('active',false);
+    this.imgCartulina.classList.toggle('active',false);
+    this.imgCartulinaHilada.classList.toggle('active',false);
+    this.imgCopia.classList.toggle('active',false);
+    this.imgCouche.classList.toggle('active',false);
+    this.imgDuplex.classList.toggle('active',true);
+    this.imgPapelHueso.classList.toggle('active',false);
+    this.imgQuimico.classList.toggle('active',false);
+    this.imgSabana.classList.toggle('active',false);
+    this.imgTriplex.classList.toggle('active',false);
+
+    this.nombrePrecio = 'Duplex';
+
     this.precioService.getPreciosDuplex().subscribe(response => {
       this.precios = Object.assign([], response);
     });
   }
 
   getPreciosPapelHueso() {
+    this.imgAdhesivo.classList.toggle('active',false);
+    this.imgBond.classList.toggle('active',false);
+    this.imgCartulina.classList.toggle('active',false);
+    this.imgCartulinaHilada.classList.toggle('active',false);
+    this.imgCopia.classList.toggle('active',false);
+    this.imgCouche.classList.toggle('active',false);
+    this.imgDuplex.classList.toggle('active',false);
+    this.imgPapelHueso.classList.toggle('active',true);
+    this.imgQuimico.classList.toggle('active',false);
+    this.imgSabana.classList.toggle('active',false);
+    this.imgTriplex.classList.toggle('active',false);
+
+    this.nombrePrecio = 'Papel Hueso';
+
     this.precioService.getPreciosPapelHueso().subscribe(response => {
       this.precios = Object.assign([], response);
     });
   }
 
   getPreciosQuimico() {
+    this.imgAdhesivo.classList.toggle('active',false);
+    this.imgBond.classList.toggle('active',false);
+    this.imgCartulina.classList.toggle('active',false);
+    this.imgCartulinaHilada.classList.toggle('active',false);
+    this.imgCopia.classList.toggle('active',false);
+    this.imgCouche.classList.toggle('active',false);
+    this.imgDuplex.classList.toggle('active',false);
+    this.imgPapelHueso.classList.toggle('active',false);
+    this.imgQuimico.classList.toggle('active',true);
+    this.imgSabana.classList.toggle('active',false);
+    this.imgTriplex.classList.toggle('active',false);
+
+    this.nombrePrecio = 'Químico';
+
     this.precioService.getPreciosQuimico().subscribe(response => {
       this.precios = Object.assign([], response);
     });
   }
 
   getPreciosSabana() {
+    this.imgAdhesivo.classList.toggle('active',false);
+    this.imgBond.classList.toggle('active',false);
+    this.imgCartulina.classList.toggle('active',false);
+    this.imgCartulinaHilada.classList.toggle('active',false);
+    this.imgCopia.classList.toggle('active',false);
+    this.imgCouche.classList.toggle('active',false);
+    this.imgDuplex.classList.toggle('active',false);
+    this.imgPapelHueso.classList.toggle('active',false);
+    this.imgQuimico.classList.toggle('active',false);
+    this.imgSabana.classList.toggle('active',true);
+    this.imgTriplex.classList.toggle('active',false);
+
+    this.nombrePrecio = 'Sábana';
+
     this.precioService.getPreciosSabana().subscribe(response => {
       this.precios = Object.assign([], response);
     });
   }
 
   getPreciosTriplex() {
+    this.imgAdhesivo.classList.toggle('active',false);
+    this.imgBond.classList.toggle('active',false);
+    this.imgCartulina.classList.toggle('active',false);
+    this.imgCartulinaHilada.classList.toggle('active',false);
+    this.imgCopia.classList.toggle('active',false);
+    this.imgCouche.classList.toggle('active',false);
+    this.imgDuplex.classList.toggle('active',false);
+    this.imgPapelHueso.classList.toggle('active',false);
+    this.imgQuimico.classList.toggle('active',false);
+    this.imgSabana.classList.toggle('active',false);
+    this.imgTriplex.classList.toggle('active',true);
+
+    this.nombrePrecio = 'Triplex';
+
     this.precioService.getPreciosTriplex().subscribe(response => {
       this.precios = Object.assign([], response);
     });

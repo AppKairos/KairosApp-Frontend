@@ -1,0 +1,140 @@
+button {
+    border-radius: 5px;
+}
+
+.filtrar {
+    background-color: white;
+    color: black;
+    border: 1px solid #ced4da;
+}
+
+.filtrarIcono {
+    color: #5D213B;
+}
+
+.buscar {
+    border: none;
+    background-color: #F4F2FF;
+    margin-left: 5px;
+}
+
+.tableHead {
+    border-bottom: none;
+    color: #b3b3b3;
+}
+
+.imagen {
+    max-width: auto;
+    height: 80%;
+    border-radius: 5px;
+}
+
+.textoImg {
+    padding: 3px;
+}
+
+.accionEditar {
+    margin-left: 10px;
+    margin-bottom: 10px;
+    font-size: 20px;
+    transition: 0.2s ease-in-out all;
+    color: #F39200;
+}
+.accionEditar:hover {
+    color: #FFC107;
+}
+
+.accionEliminar {
+    margin-left: 10px;
+    margin-bottom: 10px;
+    font-size: 20px;
+    transition: 0.2s ease-in-out all;
+    color: #5D213B;
+}
+.accionEliminar:hover {
+    color: #DC3545;
+}
+
+
+
+.error {
+    color: rgba(255,0,0,0.4);
+}
+
+.btn-Google {
+    background-color: white;
+    border: 1px groove rgba(0, 0, 0, 0.2);
+    border-radius: 20px;
+    color: #5D213B;
+    font-size: 16px;
+    margin: 5px;
+    width: 100%;
+}
+.btn-Facebook {
+    background-color: white;
+    border: 1px groove rgba(0, 0, 0, 0.2);
+    border-radius: 20px;
+    color: #385898;
+    font-size: 16px;
+    margin: 5px;
+    width: 100%;
+}
+.cardLogin {
+    border: none;
+}
+
+.btnRegistrarse {
+    background-color: white;
+    border: 2px solid #5D213B;
+    color: #5D213B;
+}
+.btnNew {
+    /* margin: 10px; */
+    width: 100%;
+}
+.inputNew {
+    border: none;
+    border-bottom: 1px groove rgba(0, 0, 0, 0.2);
+    border-radius: 0px;
+}
+
+.imgLogin {
+    padding-top: 0px;
+    padding: 50px;
+}
+.backImgLogin {
+    background-color: #5D213B;
+    border-radius: 3px;
+}
+
+@media (max-width: 991px) {
+    .altoImg {
+        padding-top: 50px;
+        padding-bottom: 50px;
+    }
+}
+
+@media (min-width: 992px) {  
+    .altoImg {
+        padding-top: 270px;
+        padding-bottom: 270px;
+    }
+}
+
+.cerrar {
+    margin-top: 7px;
+    position: absolute;
+    left: 93%;
+    font-size: 25px;
+}
+
+.accionVer {
+    margin-left: 10px;
+    margin-bottom: 10px;
+    font-size: 20px;
+    transition: 0.2s ease-in-out all;
+    color: #F39200;
+}
+.accionVer:hover {
+    color: #FFC107;
+}

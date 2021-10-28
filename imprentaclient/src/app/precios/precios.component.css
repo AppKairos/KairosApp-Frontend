@@ -23,10 +23,24 @@ button {
     color: #b3b3b3;
 }
 
+
+
 .imagen {
     max-width: auto;
     height: 80%;
     border-radius: 5px;
+}
+.imagen:hover {
+    opacity: 0.9;
+    box-shadow: 0 0 10px rgba(243, 146, 0, 1);
+    border: 0.5px groove rgba(243, 146, 0, 1);
+    transition: 0.3s ease all;
+}
+.active {
+    transition: 0.3s ease all;
+    box-shadow: 0 0 30px rgba(243, 146, 0, 1);
+    border: 0.5px groove rgba(243, 146, 0, 1);
+    opacity: 0.9;
 }
 
 .textoImg {
@@ -126,4 +140,8 @@ button {
     position: absolute;
     left: 93%;
     font-size: 25px;
+}
+
+.disabledInput {
+    background-color: white;
 }

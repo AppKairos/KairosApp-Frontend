@@ -1,92 +1,84 @@
 <form [formGroup]="profileForm" (ngSubmit)="cotizarAfiche()">
 
 <section>
-    <div class="container">
-      <div class="row pt-3">
-          <div class="col-12">
-            <h1 class="text-center">Afiches</h1>
-          </div>
-      </div>
-      <div class="row">
-          <div class="col-12 col-lg-3">
-              <label for="cantidad" class="form-label"><strong>Cantidad de Afiches</strong></label>
-              <input type="number" class="form-control" id="cantidad" aria-describedby="afiche"  formControlName="cantidad">
-          </div>
-          
-      </div>
-      <div class="row pt-5">
-          <div class="col-12 col-lg-3">
+    <div class="container mt-5">
+        <div class="row pt-3 pb-4">
+            <div class="col-12">
+              <h1 class="text-center">Afiches</h1>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-12 col-xl-4 col-lg-4 col-md-4 col-sm-12">
                 <label for="tam" class="form-label"><strong>Tamaño de papel</strong></label>
-                <select id="tam" class="form-select" aria-label="Default select example" formControlName="Tam_papel">
+                <select id="tam" class="form-select input" aria-label="Default select example" formControlName="Tam_papel">
                     <option selected>Seleccione una opcion</option>
                     <option value="Carta">Carta</option>
                     <option value="Legal">Legal</option>
                     <option value="Cuarto Oficio">Cuarto Oficio</option>
                 </select>
-          </div>
-          <div class="col-12 col-lg-3">
+
+                <label for="placa" class="form-label"><strong>Tamaño de placa</strong></label>
+                <select id="placa" class="form-select input" aria-label="Default select example" formControlName="tam_placa">
+                    <option selected>Seleccione una opcion</option>
+                    <option value="GTO 53X33">GTO 53X33</option>
+                    <option value="ROLAND 52X72">ROLAND 52X72</option>
+                </select>
+
                 <label for="color" class="form-label"><strong>Color Impresión</strong></label>
-                <select id="color" class="form-select" aria-label="Default select example" formControlName="color">
+                <select id="color" class="form-select input" aria-label="Default select example" formControlName="color">
                     <option selected>Seleccione una opcion</option>
                     <option value="Full Color">Full Color</option>
                     <option value="Duo Tono">Duo Tono</option>
                     <option value="Mono Color">Mono Color</option>
                 </select>
-          </div>
-          <div class="col-12 col-lg-3">
+
                 <label for="tipo" class="form-label"><strong>Tipo de papel</strong></label>
-                <select id="tipo" class="form-select" aria-label="Default select example" formControlName="tipo_papel">
+                <select id="tipo" (change)="getGramajesTipo($event.target.value)" class="form-select input" aria-label="Default select example" formControlName="tipo_papel">
                     <option selected>Seleccione una opcion</option>
-                    <option value="Bond">Bond</option>
-                    <option value="Couche">Couche</option>
-                    <option value="Duplex">Duplex</option>
-                    <option value="Triplex">Triplex</option>
+                    <option *ngFor="let precio of precios" [value]="precio">{{ precio }}</option>
                 </select>
-          </div>
-          <div class="col-12 col-lg-3">
+                
                 <label for="gramaje" class="form-label"><strong>Gramaje de papel</strong></label>
-                <select id="gramaje" class="form-select" aria-label="Default select example" formControlName="gramaje_papel">
+                <select id="gramaje" class="form-select input" aria-label="Default select example" formControlName="gramaje_papel">
                     <option selected>Seleccione una opcion</option>
-                    <option value="Bond 63">Bond 63</option>
-                    <option value="Couche 115">Couche 115</option>
-                    <option value="Duplex 125">125</option>
-                    <option value="Triplex 150">Triplex 150</option>
+                    <option *ngFor="let gramaje of gramajesPorNombre" [value]="gramaje">{{ gramaje }}</option>
                 </select>
-          </div>
-      </div>
-      <div class="row pt-5">
-          <div class="col-12 col-lg-3">
-                <label for="placa" class="form-label"><strong>Tamaño de placa</strong></label>
-                <select id="placa" class="form-select" aria-label="Default select example" formControlName="tam_placa">
-                    <option selected>Seleccione una opcion</option>
-                    <option value="GTO 53X33">GTO 53X33</option>
-                    <option value="ROLAND 52X72">ROLAND 52X72</option>
-                </select>
-          </div>
-          <div class="col-12  col-lg-3">
-              <label for="pDisenio" class="form-label"><strong>Precio Diseño</strong></label>
-              <input type="number" class="form-control" id="pDisenio" aria-describedby="afiche" formControlName="precio_design">
-              <label for="pAcabado" class="form-label"><strong>Precio Acabado</strong></label>
-              <input type="number" class="form-control" id="pAcabado" aria-describedby="afiche" formControlName="precio_acabado">
-              <label for="ganancia" class="form-label"><strong>Gananacia %</strong></label>
-              <input type="number" class="form-control" id="ganancia" aria-describedby="afiche" formControlName="ganancia">
             </div>
-          <div class="col-12 col-lg-1">
-          </div>
-          <div class="col-12  col-lg-5">
-              <label for="sin" class="form-label"><strong>Sin Factura: </strong><div id="sinFactura">{{sinFactura}}</div></label><br>
-              <label for="iva" class="form-label"><strong>IVA: </strong><div id="iva">{{iva}}</div></label><br>
-              <label for="con" class="form-label"><strong>Con Factura: </strong><div id="conFactura">{{conFactura}}</div></label><br>
-              <label for="total" class="form-label"><strong>Total: </strong><div id="total">{{total}}</div></label>
-          </div>
-      </div>
-      <div class="row pt-3">
-          <div class="col-12 col-lg-3">
-          </div>
-          <div class="d-grid col-12 col-lg-3">
-              <button type="submit" class="btn btn-main p-12 pb-2" >Cotizar</button>
-          </div>
-      </div>
+            <div class="col-12 col-xl-4 col-lg-4 col-md-4 col-sm-12  pb-5">
+                <label for="cantidad" class="form-label"><strong>Cantidad de Afiches</strong></label>
+                <input type="number" class="form-control input" id="cantidad" aria-describedby="afiche"  formControlName="cantidad">
+
+                <label for="pDisenio" class="form-label"><strong>Precio Diseño</strong></label>
+                <input type="number" class="form-control input" id="pDisenio" aria-describedby="afiche" formControlName="precio_design">
+
+                <label for="pAcabado" class="form-label"><strong>Precio Acabado</strong></label>
+                <input type="number" class="form-control input" id="pAcabado" aria-describedby="afiche" formControlName="precio_acabado">
+
+                <label for="ganancia" class="form-label"><strong>Gananacia %</strong></label>
+                <input type="number" class="form-control input" id="ganancia" aria-describedby="afiche" formControlName="ganancia">
+            
+                <button type="submit" class="btn btn-main btnCotizar">Cotizar</button>
+            </div>
+            <div class="col-12 col-xl-4 col-lg-4 col-md-4 col-sm-12">
+                <div class="row contenedorPrecios">
+                    <div class="col">
+                        <label for="sin" class="form-label"><strong>Precio Bruto:</strong></label>
+                        <p class="output">{{precioBruto}} Bs.</p>
+
+                        <label for="con" class="form-label"><strong>Precio Final:</strong></label>
+                        <p class="output">{{precioFinal}} Bs.</p>
+                    </div>
+                    <div class="col">
+                        <label for="iva" class="form-label"><strong>IVA:</strong></label>
+                        <p class="output">{{iva}} Bs.</p>
+
+                        <label for="total" class="form-label"><strong>Total:</strong></label>
+                        <p>{{total}} Bs.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </section>
 

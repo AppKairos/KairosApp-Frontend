@@ -11,7 +11,7 @@
                             <h1>Registrarse</h1>
                             <div class="row justify-content-center">
                                 <div class="col col-12 col-md-6 col-lg-6">
-                                    <button class="btn btn-Google" (click)="iniciarGoogle()"><i class="fab fa-google"></i> Registrar con Google</button>
+                                    <button class="btn btn-Google" (click)="iniciarGoogle()"><img src="../assets/google.png" class="googleImg"> Registrar con Google</button>
                                 </div>
                                 <!-- <div class="col col-12 col-md-6 col-lg-6">
                                     <button class="btn btn-Facebook" (click)="iniciarFacebook()"><i class="fab fa-facebook"></i> Registrar con Facebook</button>
@@ -20,7 +20,7 @@
                         </div>
                         <div class="mb-3">
                             <label for="ci" class="form-label">C.I.</label>
-                            <input type="number" class="form-control inputNew" formControlName="ci"  [class]="validarCampo('ci')">
+                            <input type="number" class="form-control inputNew" formControlName="ci" [class]="validarCampo('ci')">
                             
                             <div *ngIf="profileForm.get('ci').invalid && (profileForm.get('ci').dirty || profileForm.get('ci').touched)">
                                 <div *ngIf="profileForm.get('ci').errors?.required" class="error">

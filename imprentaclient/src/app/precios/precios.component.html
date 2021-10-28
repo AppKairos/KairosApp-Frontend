@@ -8,47 +8,47 @@
         </div>
         <div class="row">
             <div class="col-4 col-xl-2 col-lg-2 col-md-2 col-sm-4 pb-3">
-                <img src="../assets/adhesivo.jpeg" class="imagen img-fluid" (click)="getPreciosAdhesivo()">
+                <img id="imgAdhesivo" src="../assets/adhesivo.jpeg" class="imagen img-fluid" (click)="getPreciosAdhesivo()">
                 <div class="textoImg">Adhesivo</div>
             </div>
             <div class="col-4 col-xl-2 col-lg-2 col-md-2 col-sm-4 pb-3">
-                <img src="../assets/bond.jpeg" class="imagen img-fluid" (click)="getPreciosBond()">
+                <img id="imgBond" src="../assets/bond.jpeg" class="imagen img-fluid" (click)="getPreciosBond()">
                 <div class="textoImg">Bond</div>
             </div>
             <div class="col-4 col-xl-2 col-lg-2 col-md-2 col-sm-4 pb-3">
-                <img src="../assets/cartulina.jpeg" class="imagen img-fluid" (click)="getPreciosCartulina()">
+                <img id="imgCartulina" src="../assets/cartulina.jpeg" class="imagen img-fluid" (click)="getPreciosCartulina()">
                 <div class="textoImg">Cartulina</div>
             </div>
             <div class="col-4 col-xl-2 col-lg-2 col-md-2 col-sm-4 pb-3">
-                <img src="../assets/hilada.jpeg" class="imagen img-fluid" (click)="getPreciosCartulinaHilada()">
+                <img id="imgCartulinaHilada" src="../assets/hilada.jpeg" class="imagen img-fluid" (click)="getPreciosCartulinaHilada()">
                 <div class="textoImg">Cartulina Hilada</div>
             </div>
             <div class="col-4 col-xl-2 col-lg-2 col-md-2 col-sm-4 pb-3">
-                <img src="../assets/copia.jpeg" class="imagen img-fluid" (click)="getPreciosCopia()">
+                <img id="imgCopia" src="../assets/copia.jpeg" class="imagen img-fluid" (click)="getPreciosCopia()">
                 <div class="textoImg">Copia</div>
             </div>
             <div class="col-4 col-xl-2 col-lg-2 col-md-2 col-sm-4 pb-3">
-                <img src="../assets/couche.jpeg" class="imagen img-fluid" (click)="getPreciosCouche()">
+                <img id="imgCouche" src="../assets/couche.jpeg" class="imagen img-fluid" (click)="getPreciosCouche()">
                 <div class="textoImg">Couche</div>
             </div>
             <div class="col-4 col-xl-2 col-lg-2 col-md-2 col-sm-4 pb-3">
-                <img src="../assets/duplex.jpeg" class="imagen img-fluid" (click)="getPreciosDuplex()">
+                <img id="imgDuplex" src="../assets/duplex.jpeg" class="imagen img-fluid" (click)="getPreciosDuplex()">
                 <div class="textoImg">Duplex</div>
             </div>
             <div class="col-4 col-xl-2 col-lg-2 col-md-2 col-sm-4 pb-3">
-                <img src="../assets/hueso.jpeg" class="imagen img-fluid" (click)="getPreciosPapelHueso()">
+                <img id="imgPapelHueso" src="../assets/hueso.jpeg" class="imagen img-fluid" (click)="getPreciosPapelHueso()">
                 <div class="textoImg">Papel Hueso</div>
             </div>
             <div class="col-4 col-xl-2 col-lg-2 col-md-2 col-sm-4 pb-3">
-                <img src="../assets/quimico.jpeg" class="imagen img-fluid" (click)="getPreciosQuimico()">
+                <img id="imgQuimico" src="../assets/quimico.jpeg" class="imagen img-fluid" (click)="getPreciosQuimico()">
                 <div class="textoImg">Quimico</div>
             </div>
             <div class="col-4 col-xl-2 col-lg-2 col-md-2 col-sm-4 pb-3">
-                <img src="../assets/sabana.jpeg" class="imagen img-fluid" (click)="getPreciosSabana()">
+                <img id="imgSabana" src="../assets/sabana.jpeg" class="imagen img-fluid" (click)="getPreciosSabana()">
                 <div class="textoImg">Sabana</div>
             </div>
             <div class="col-4 col-xl-2 col-lg-2 col-md-2 col-sm-4 pb-3">
-                <img src="../assets/triplex.jpeg" class="imagen img-fluid" (click)="getPreciosTriplex()">
+                <img id="imgTriplex" src="../assets/triplex.jpeg" class="imagen img-fluid" (click)="getPreciosTriplex()">
                 <div class="textoImg">Triplex</div>
             </div>
         </div>
@@ -137,7 +137,7 @@
         </div>
         <div class="mb-3">
             <label for="nombre" class="form-label">Nombre</label>
-            <input type="text" class="form-control inputNew" formControlName="nombre" [class]="validarCampoAddPrecioForm('nombre')">
+            <input id="nombrePrecio" [ngModel]="nombrePrecio" disabled type="text" class="form-control inputNew disabledInput" formControlName="nombre" [class]="validarCampoAddPrecioForm('nombre')">
             
             <div *ngIf="addPrecioForm.get('nombre').invalid && (addPrecioForm.get('nombre').dirty || addPrecioForm.get('nombre').touched)">
                 <div *ngIf="addPrecioForm.get('nombre').errors?.required" class="error">
@@ -178,7 +178,7 @@
         </div>
 
         <div class="mb-3">
-            <label for="tam" class="form-label">Tamno</label>
+            <label for="tam" class="form-label">Tamaño</label>
             <input type="text" class="form-control inputNew" formControlName="tam" [class]="validarCampoAddPrecioForm('tam')">
 
             <div *ngIf="addPrecioForm.get('tam').invalid && (addPrecioForm.get('tam').dirty || addPrecioForm.get('tam').touched)">
@@ -277,7 +277,7 @@
         </div>
 
         <div class="mb-3">
-            <label for="tam" class="form-label">Tamno</label>
+            <label for="tam" class="form-label">Tamaño</label>
             <input type="text" class="form-control inputNew" formControlName="tam" [class]="validarCampoUpdatePrecioForm('tam')">
 
             <div *ngIf="updatePrecioForm.get('tam').invalid && (updatePrecioForm.get('tam').dirty || updatePrecioForm.get('tam').touched)">

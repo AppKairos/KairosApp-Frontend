@@ -29,6 +29,7 @@ export class LoginService {
   }
 
   loginGoogle(usuarioGoogleLogin): Observable<Response>{
+    console.log(usuarioGoogleLogin);
     return this.http.post<Response>(this.myAppUrl + this.myApiUrl + 'login/gmail', usuarioGoogleLogin, this.httpOptions);
   }
 }

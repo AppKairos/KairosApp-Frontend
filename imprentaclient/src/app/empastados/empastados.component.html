@@ -8,7 +8,7 @@
       <div class="row">
           <div class="col-12 col-lg-6 ">
             <div class="container1">
-              <img class="imgEmpastado" src="/assets/plantilla-empastado.png" alt="photo1" style="height: 900px;">
+              <img class="imgEmpastado imagenEmpastado img-fluid" src="/assets/plantilla-empastado.png" alt="photo1">
               <div class="facultad">{{facultad}}</div>
               <div class="carrera">{{carrera}}</div>
               <div class="titulo">{{titulo}}</div>
@@ -23,36 +23,36 @@
             <div class="col d-flex justify-content-center">
               <div class="card" style="width: 34rem; background-color: #DCDBDD;">
                   <div class="card-body">
-                      <form>
+                      <form [formGroup]="profileForm">
                           <div class="mb-3">
                             <label for="facultad" class="form-label">Facultad</label>
-                            <input type="text" class="form-control" id="facultad" aria-describedby="facultad" [(ngModel)]="facultad">
+                            <input type="text" class="form-control" id="facultad" aria-describedby="facultad" [(ngModel)]="facultad" formControlName="facultad">
                           </div>
                           <div class="mb-3">
                             <label for="carrera" class="form-label">Carrera</label>
-                            <input type="text" class="form-control" id="carrera" aria-describedby="carrera" [(ngModel)]="carrera">
+                            <input type="text" class="form-control" id="carrera" aria-describedby="carrera" [(ngModel)]="carrera" formControlName="carrera">
                           </div>
                           <div class="mb-3">
                             <label for="titulo" class="form-label">Título Tesis</label>
-                            <input type="text" class="form-control" id="titulo" aria-describedby="titulo" [(ngModel)]="titulo">
+                            <input type="text" class="form-control" id="titulo" aria-describedby="titulo" [(ngModel)]="titulo" formControlName="tituloTesis">
                           </div>
                           <div class="mb-3">
                             <label for="trabajo" class="form-label">Trabajo en</label>
-                            <input type="text" class="form-control" id="trabajo" aria-describedby="trabajo" [(ngModel)]="trabajo">
+                            <input type="text" class="form-control" id="trabajo" aria-describedby="trabajo" [(ngModel)]="trabajo" formControlName="trabajo">
                           </div>
                           <div class="mb-3">
                             <label for="autor" class="form-label">Autor</label>
-                            <input type="text" class="form-control" id="autor" aria-describedby="autor" [(ngModel)]="autor">
+                            <input type="text" class="form-control" id="autor" aria-describedby="autor" [(ngModel)]="autor" formControlName="autor">
                           </div>
                           <div class="mb-3">
                             <label for="tutor" class="form-label">Tutor</label>
-                            <input type="text" class="form-control" id="tutor" aria-describedby="tutor" [(ngModel)]="tutor">
+                            <input type="text" class="form-control" id="tutor" aria-describedby="tutor" [(ngModel)]="tutor" formControlName="tutor">
                           </div>
                           <div class="mb-3">
                             <div class="row">
                               <div class="col-12 col-lg-6">
                                 <label for="mes" class="form-label">Mes</label>
-                                <select id="mes" class="form-select" [(ngModel)]="mes">
+                                <select id="mes" class="form-select" [(ngModel)]="mes" formControlName="mes">
                                   <option selected>Seleccione el mes</option>
                                   <option value="ENERO">ENERO</option>
                                   <option value="FEBRERO">FEBRERO</option>
@@ -70,7 +70,7 @@
                               </div>
                               <div class="col-12 col-lg-6 " >
                                 <label for="anio" class="form-label">Año</label>
-                                <input type="number" class="form-control" id="anio" aria-describedby="anio" [(ngModel)]="anio">
+                                <input type="number" class="form-control" id="anio" aria-describedby="anio" [(ngModel)]="anio" formControlName="anio">
                               </div>
                             </div>
                           </div>
@@ -78,7 +78,7 @@
                             <div class="row">
                               <div class="col-12 col-lg-6 " >
                                 <label for="mes" class="form-label">Cantidad</label>
-                                <select class="form-select" aria-label="Default select example"  [(ngModel)]="cantidad">
+                                <select class="form-select" aria-label="Default select example" [(ngModel)]="cantidad" formControlName="cantidad">
                                   <option selected>Seleccione la cantidad</option>
                                   <option value="1">1</option>
                                   <option value="2">2</option>
@@ -87,14 +87,14 @@
                               </div>
                               <div class="col-12 col-lg-6 " >
                                 <div class="mb-3">
-                                  <label for="precio" class="form-label">Precio <div id="precio"><strong>{{cantidad*50}}</strong></div></label>
+                                  <label for="precio" class="form-label">Precio <div id="precio"><strong>{{cantidad*50}} Bs.</strong></div></label>
                                 </div>
                               </div>
                             </div>
                           </div>
                           
                           <div class="d-flex justify-content-evenly">
-                              <a [hidden]="!habilitado()" class="btn btn-main-login" aria-current="page" target="_blank" href="https://api.whatsapp.com/send?phone=59177113546&text=Soy%20{{cliente}}%20deseo%20cotizar%20un%20empastado%20%3D%3E%20facultad%3A%20{{facultad}}%2C%20carrera%3A%20{{carrera}}%2C%20titulo%3A%20{{titulo}}%2C%20trabajo%3A%20{{trabajo}}%2C%20autor%3A%20{{autor}}%2C%20tutor%3A%20{{tutor}}%2C%20mes%3A%20{{mes}}%2C%20a%C3%B1o%3A%20{{anio}}%2C%20cantidad%3A%20{{cantidad}}%2C%20precio%3A%20{{cantidad*50}}">Reservar</a>
+                              <a [hidden]="!habilitado()" class="btn btn-main-login" aria-current="page" (click)="guardarReserva()">Reservar</a>
                               <a [hidden]="habilitado()" class="btn btn-main" aria-current="page" href='/login'>Inicia sesion para reservar</a>
                           </div>
                       </form>

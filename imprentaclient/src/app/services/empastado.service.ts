@@ -26,4 +26,8 @@ export class EmpastadoService {
   getEmpastadosById(id: number): Observable<Response>{
     return this.http.get<Response>(this.myAppUrl + this.myApiUrl + id, this.httpOptions);
   }
+
+  reservarEmpastado(empastado: any): Observable<Response> {
+    return this.http.post<Response>(this.myAppUrl + this.myApiUrl, empastado, this.httpOptions);
+  }
 }

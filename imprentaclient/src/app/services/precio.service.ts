@@ -79,4 +79,12 @@ export class PrecioService {
   deletePrecio(id: number):Observable<Response> {
     return this.http.delete<Response>(this.myAppUrl + this.myApiUrl + '/' + id, this.httpOptions);
   }
+
+  getNombresPrecios():Observable<Response> {
+    return this.http.get<Response>(this.myAppUrl + this.myApiUrl + '/nombre', this.httpOptions);
+  }
+
+  getGramajesTipo(nombre: any):Observable<Response> {
+    return this.http.get<Response>(this.myAppUrl + this.myApiUrl + '/?nombre=' + nombre, this.httpOptions);
+  }
 }

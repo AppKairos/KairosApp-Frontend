@@ -1,16 +1,109 @@
-<table class="table">
+<!-- <table class="table table-hover table-sm">
     <thead class="thead-dark">
       <tr>
         <th scope="col">Cliente</th>
-        <th scope="col">Contacto</th>
+        <th scope="col">Email</th>
         <th scope="col">Titulo de empastado</th>
       </tr>
     </thead>
     <tbody>
-      <tr **ngFor="let empastado of empastados">
-        <td>{{ empastado.nombre }}</td>
-        <td>Otto</td>
-        <td>@mdo</td>
+      <tr *ngFor="let empastadoCliente of empastadosClientes">
+        <td>{{ empastadoCliente.nombreCliente }}</td>
+        <td>{{ empastadoCliente.email }}</td>
+        <td>{{ empastadoCliente.titulo }}</td>
       </tr>
     </tbody>
-</table>
+</table> -->
+
+<br>
+<section class="mt-4 p-4">
+  <div class="row">
+    <div class="col">
+        <h3>Empastados reservados</h3>
+    </div>
+  </div>
+</section>
+<section class="mt-4">
+  <div class="container">
+  <div class="row">
+    <div class="col">
+      <div class="table-responsive">
+        <table class="table table-hover table-sm">
+          <thead class="tableHead">
+            <tr class="tableHead">
+              <th scope="col" class="tableHead">Cliente</th>
+              <th scope="col" class="tableHead">Email</th>
+              <th scope="col" class="tableHead">Titulo de empastado</th>
+              <th scope="col" class="tableHead">Abrir</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let empastadoCliente of empastadosClientes">
+              <td>{{ empastadoCliente.nombre }}</td>
+              <td>{{ empastadoCliente.email }}</td>
+              <td>{{ empastadoCliente.tituloTesis }}</td>
+              <td><i class="fas fa-images accionVer" (click)="openModal(empastadoModal, empastadoCliente)"></i></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  </div>
+</section>
+<br>
+
+<ng-template #empastadoModal let-modal>
+  <i class="fas fa-times-circle cerrar" (click)="modal.dismiss()"></i>
+
+  <section class="empastado m-4">
+    <div class="mb-3">
+      <h1>Empastado</h1>
+    </div>
+    
+    <div class="mb-3">
+      <label for="nombre" class="form-label"><strong>Facultad</strong></label>
+      <p>{{ facultad }}</p>
+    </div>
+    
+    <div class="mb-3">
+      <label for="nombre" class="form-label"><strong>Carrera</strong></label>
+      <p>{{ carrera }}</p>
+    </div>
+    
+    <div class="mb-3">
+      <label for="nombre" class="form-label"><strong>Titulo</strong></label>
+      <p>{{ titulo }}</p>
+    </div>
+    
+    <div class="mb-3">
+      <label for="nombre" class="form-label"><strong>Trabajo</strong></label>
+      <p>{{ trabajo }}</p>
+    </div>
+    
+    <div class="mb-3">
+      <label for="nombre" class="form-label"><strong>Autor</strong></label>
+      <p>{{ autor }}</p>
+    </div>
+    
+    <div class="mb-3">
+      <label for="nombre" class="form-label"><strong>Tutor</strong></label>
+      <p>{{ tutor }}</p>
+    </div>
+    
+    <div class="mb-3">
+      <label for="nombre" class="form-label"><strong>Mes</strong></label>
+      <p>{{ mes }}</p>
+    </div>
+    
+    <div class="mb-3">
+      <label for="nombre" class="form-label"><strong>Año</strong></label>
+      <p>{{ anio }}</p>
+    </div>
+    
+    <div class="mb-3">
+      <label for="nombre" class="form-label"><strong>Cantidad</strong></label>
+      <p>{{ cantidad }}</p>
+    </div>
+  </section>
+</ng-template>

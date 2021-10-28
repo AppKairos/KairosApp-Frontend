@@ -26,4 +26,7 @@ export class ReservaService {
   getReservasEmpastados(): Observable<Response>{
     return this.http.get<Response>(this.myAppUrl + this.myApiUrl + '?nombre=Empastado', this.httpOptions);
   }
+  getEmpastadosReservas(): Observable<Response>{
+    return this.http.get<Response>(this.myAppUrl + this.myApiUrl + 'empastados', this.httpOptions);
+  }
 }

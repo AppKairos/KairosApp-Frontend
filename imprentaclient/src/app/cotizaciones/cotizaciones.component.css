@@ -1,0 +1,59 @@
+.contenedorPrecios {
+    /* background-color: #5D213B; */
+    /* border: 1px solid rgba(0,0,0,0.2); */
+    border-radius: 3px;
+    /* color: rgb(255, 255, 255); */
+    font-size: medium;
+}
+
+.btnCotizar {
+    margin-top: 30px;
+    width: 100%;
+}
+
+/* @media screen and (min-width: 768px) {
+    .btnCotizar {
+        width: 70%;
+    }
+}
+
+@media screen and (min-width: 992px) {
+    .btnCotizar {
+        width: 50%;
+    }
+}
+
+@media screen and (min-width: 1200px) {
+    .btnCotizar {
+        width: 30%;
+    }
+} */
+
+.input {
+    margin-bottom: 10px;
+}
+
+.col {
+    margin: 10px;
+}
+
+.row {
+    width: auto;
+}
+
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
+.output {
+    /* padding-bottom: 5px; */
+    min-width: 100px;
+}
