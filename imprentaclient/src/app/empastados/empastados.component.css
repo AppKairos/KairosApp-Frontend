@@ -1,6 +1,12 @@
+.error {
+  color: rgba(255,0,0,0.4);
+}
+
 .container1 {
     position: relative;
     text-align: center;
+    border: 2px solid #efb810;
+    border-radius: 3px;
   }
   
   .facultad {
@@ -118,7 +124,8 @@
   }
 
   .imgEmpastado {
-    border: 0px groove rgba(0,0,0,0.2)
+    border: 0px groove rgba(0,0,0,0.2);
+    border-radius: 3px;
   }
 
   .labelEmpastado {
@@ -140,4 +147,22 @@ input[type=number] {
 .imagenEmpastado {
   max-width: 100%;
   height: auto;
+}
+
+.inputNew {
+  border: none;
+  border-bottom: 1px groove rgba(0, 0, 0, 0.2);
+  border-radius: 0px;
+}
+
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
 }

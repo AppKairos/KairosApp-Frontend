@@ -11,7 +11,7 @@ export class GuardiaNoLoginService implements CanActivate {
 
   canActivate() {
     let usuario = JSON.parse(localStorage.getItem('usuario'));
-    if(usuario === "vacio") {
+    if(usuario === "vacio" || usuario === null) {
       return true;
     }else {
       console.log('No debes iniciar sesion para ingresar a la pagina.');

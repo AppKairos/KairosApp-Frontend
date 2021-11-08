@@ -5,6 +5,7 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { PrecioService } from '../services/precio.service';
 import { FormGroup, FormControl, Validators} from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
+import { EmpastadoService } from '../services/empastado.service';
 
 @Component({
   selector: 'app-precios',
@@ -25,15 +26,20 @@ export class PreciosComponent implements OnInit {
   imgSabana = null;
   imgTriplex = null;
   nombrePrecio = null;
+  precioEmpastados = 0;
+  nombrePrecioTipoPapel = null;
+
+  updatePrecioEmpastadoForm = new FormGroup({
+    precio: new FormControl(0,[
+      Validators.required,
+      Validators.pattern(new RegExp(/^[1-9][0-9]*$/))
+    ])
+  });
 
   addPrecioForm = new FormGroup({
     nombre: new FormControl('',[
       Validators.required,
       Validators.pattern(new RegExp(/^[a-zA-Z\s]+$/))
-    ]),
-    precioneto: new FormControl('',[
-      Validators.required,
-      Validators.pattern(new RegExp(/^[0-9]+\.[0-9]+$/))
     ]),
     tipo: new FormControl('',[
       Validators.required,
@@ -57,9 +63,6 @@ export class PreciosComponent implements OnInit {
     nombre: new FormControl('',[
       Validators.pattern(new RegExp(/^[a-zA-Z\s]+$/))
     ]),
-    precioneto: new FormControl('',[
-      Validators.pattern(new RegExp(/^[0-9]+\.[0-9]+$/))
-    ]),
     tipo: new FormControl('',[
       Validators.pattern(new RegExp(/^[a-zA-Z0-9\s]+$/))
     ]),
@@ -78,7 +81,7 @@ export class PreciosComponent implements OnInit {
   idPrecio = 0;
   nombre = '';
 
-  constructor(private precioService: PrecioService, private modalservice: NgbModal) { }
+  constructor(private precioService: PrecioService, private modalservice: NgbModal, private empastadoService: EmpastadoService) { }
 
   ngOnInit(): void {
     this.imgAdhesivo = document.getElementById('imgAdhesivo');
@@ -92,12 +95,31 @@ export class PreciosComponent implements OnInit {
     this.imgQuimico = document.getElementById('imgQuimico');
     this.imgSabana = document.getElementById('imgSabana');
     this.imgTriplex = document.getElementById('imgTriplex');
+
+    this.getPrecioEmpastado();
+  }
+
+  getPrecioEmpastado() {
+    this.empastadoService.getPrecioEmpastado().subscribe(response => {
+      this.precioEmpastados = +response["precio"];
+    });
+  }
+
+  putPrecioEmpastado() {
+    let precioEmpastado = {
+      precio: this.updatePrecioEmpastadoForm.value.precio
+    };
+    this.empastadoService.updatePrecioEmpastado(precioEmpastado).subscribe(response => {
+      console.log(response);
+      this.getPrecioEmpastado();
+      this.modalservice.dismissAll();
+    });
   }
 
   addPrecio() {
     let precioNuevo = this.addPrecioForm.value;
     precioNuevo.estado = true;
-    precioNuevo.precioneto = +precioNuevo.precioneto;
+    // precioNuevo.precioneto = +precioNuevo.precioneto;
     precioNuevo.precioresma = +precioNuevo.precioresma;
     precioNuevo.pliegos = +precioNuevo.pliegos;
     this.precioService.addPrecio(precioNuevo).subscribe(response => {
@@ -131,8 +153,8 @@ export class PreciosComponent implements OnInit {
 
   updatePrecio() {
     let precioNuevo = this.updatePrecioForm.value;
-    precioNuevo.nombre = (precioNuevo.nombre === "") ? null : precioNuevo.nombre;
-    precioNuevo.precioneto = (precioNuevo.precioneto === "") ? null : +precioNuevo.precioneto;
+    precioNuevo.nombre = null;
+    // precioNuevo.precioneto = (precioNuevo.precioneto === "") ? null : +precioNuevo.precioneto;
     precioNuevo.tipo = (precioNuevo.tipo === "") ? null : precioNuevo.tipo;
     precioNuevo.tam = (precioNuevo.tam === "") ? null : precioNuevo.tam;
     precioNuevo.precioresma = (precioNuevo.precioresma === "") ? null : +precioNuevo.precioresma;
@@ -211,14 +233,20 @@ export class PreciosComponent implements OnInit {
     return (!campoValidado.valid && campoValidado.touched) ? 'is-invalid' : campoValidado.touched ? 'is-valid' : '';
   }
 
+  validarCampoUpdatePrecioEmpastadoForm(campo:string):string {
+    const campoValidado = this.updatePrecioEmpastadoForm.get(campo);
+    return (!campoValidado.valid && campoValidado.touched) ? 'is-invalid' : campoValidado.touched ? 'is-valid' : '';
+  }
+
   openModalAddPrecio(targetModal){
     this.modalservice.open(targetModal, {
       centered: true
     });
   }
 
-  openModalUpdatePrecio(targetModal, id: number){
+  openModalUpdatePrecio(targetModal, id: number, tipo: string){
     this.idPrecio = id;
+    this.nombrePrecioTipoPapel = this.nombrePrecio + ' ' + tipo;
     this.modalservice.open(targetModal, {
       centered: true
     });
@@ -227,6 +255,12 @@ export class PreciosComponent implements OnInit {
   openModalDeletePrecio(targetModal, id: number, nombre: any){
     this.idPrecio = id;
     this.nombre = nombre;
+    this.modalservice.open(targetModal, {
+      centered: true
+    });
+  }
+
+  openModalUpdatePrecioEmpastado(targetModal){
     this.modalservice.open(targetModal, {
       centered: true
     });

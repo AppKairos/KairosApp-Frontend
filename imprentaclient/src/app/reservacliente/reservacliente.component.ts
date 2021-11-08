@@ -5,13 +5,12 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { ReactiveFormsModule } from '@angular/forms';
 
 @Component({
-  selector: 'app-reserva',
-  templateUrl: './reserva.component.html',
-  styleUrls: ['./reserva.component.css']
+  selector: 'app-reservacliente',
+  templateUrl: './reservacliente.component.html',
+  styleUrls: ['./reservacliente.component.css']
 })
-export class ReservaComponent implements OnInit {
-
-  empastadosClientes = [];
+export class ReservaclienteComponent implements OnInit {
+  empastadosCliente = [];
 
   facultad = '';
   carrera = '';
@@ -27,33 +26,12 @@ export class ReservaComponent implements OnInit {
 
   idReservaTerminado = 0;
 
-  inputBuscar = null;
-
   constructor(private reservaService: ReservaService, private empastadoService: EmpastadoService, private modalservice: NgbModal) { }
 
   ngOnInit(): void {
     this.getReservasEmpastados();
 
     this.getPrecioEmpastado();
-
-    this.inputBuscar = document.getElementById('buscar') as HTMLInputElement;
-  }
-
-  buscarReservasNombre() {
-    this.empastadosClientes = [];
-    this.reservaService.buscarReservasNombre(this.inputBuscar.value).subscribe(response => {
-      let empastadosUsuarios = Object.assign([], response);
-      empastadosUsuarios.forEach(empastadoUsuario => {
-        if(!empastadoUsuario.terminado) {
-          this.empastadosClientes.push(empastadoUsuario);
-        }
-      });
-    });
-  }
-
-  limpiarBusqueda() {
-    this.inputBuscar.value = '';
-    this.getReservasEmpastados();
   }
 
   putTerminadoTrue() {
@@ -66,15 +44,13 @@ export class ReservaComponent implements OnInit {
   }
 
   getReservasEmpastados() {
-    this.empastadosClientes = [];
-    this.reservaService.getEmpastadosReservas().subscribe(response => {
+    let idUsuario = JSON.parse(localStorage.getItem('usuario'))["usuario"]["id"];
+    this.empastadosCliente = [];
+    this.reservaService.getReservasUsuario(idUsuario).subscribe(response => {
       console.log(response);
       let empastadosUsuarios = Object.assign([], response);
       empastadosUsuarios.forEach(empastadoUsuario => {
-        if(!empastadoUsuario.terminado) {
-          this.empastadosClientes.push(empastadoUsuario);
-        }
-        // this.empastadosClientes.push({ nombreCliente: empastadoUsuario.nombre, email: empastadoUsuario.email, titulo: empastadoUsuario.tituloTesis });
+        this.empastadosCliente.push(empastadoUsuario);
       });
     });
   }
@@ -99,17 +75,10 @@ export class ReservaComponent implements OnInit {
 
   }
 
-  openModalTerminado(targetModal, idReserva:any){
-    this.idReservaTerminado = idReserva;
-    this.modalservice.open(targetModal, {
-      centered: true,
-      backdrop: 'static'
-    });
-  }
-
   getPrecioEmpastado() {
     this.empastadoService.getPrecioEmpastado().subscribe(response => {
       this.precioEmpastado = +response["precio"];
     });
   }
+
 }

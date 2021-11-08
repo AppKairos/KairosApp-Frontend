@@ -1,0 +1,53 @@
+<br>
+<section class="mt-4 p-4">
+  <div class="row">
+    <div class="col">
+        <h3>Pedidos</h3>
+    </div>
+  </div>
+</section>
+
+<section>
+    <div class="contenedorPedidos">
+        <div class="pedido" *ngFor="let empastadoCliente of empastadosCliente" (click)="openModal(empastadoModal, empastadoCliente)">
+            <div class="tituloPedido elementoPedido">
+                <h6 class="tituloEmpastado" *ngIf="empastadoCliente.terminado"><strong>Listo</strong></h6>
+                <h6 class="tituloEmpastado" *ngIf="!empastadoCliente.terminado"><strong>En espera</strong></h6>
+                <i class="fas fa-check accionTerminado" *ngIf="empastadoCliente.terminado"></i>
+                <i class="fas fa-hourglass-half accionVer" *ngIf="!empastadoCliente.terminado"></i>
+            </div>
+            <img class="imagenEmpastadoPedido imagenEmpastado img-fluid" src="../assets/empastado.jpeg" alt="">
+            <p class="tituloTesis elementoPedido">{{ empastadoCliente.tituloTesis }}</p>
+            <span class="elementoPedido">...</span>
+        </div>
+    </div>
+</section>
+<br>
+
+<ng-template #empastadoModal let-modal>
+  <i class="fas fa-times-circle cerrar" (click)="modal.dismiss()"></i>
+
+  <section class="empastado m-4">
+    <div class="mb-3">
+      <h1>Empastado</h1>
+    </div>
+    
+    <div class="container1">
+      <img class="imgEmpastado imagenEmpastado img-fluid" src="/assets/plantilla-empastado.png" alt="photo1">
+      <div class="facultad">{{facultad}}</div>
+      <div class="carrera">{{carrera}}</div>
+      <div class="titulo">{{titulo}}</div>
+      <div class="trabajo">{{trabajo}}</div>
+      <div class="autor">{{autor}}</div>
+      <div class="tutor">{{tutor}}</div>
+      <div class="mes">{{mes}}</div>
+      <div class="anio">{{anio}}</div>
+    </div>
+    
+    <div class="mb-3 mt-3">
+      <label for="nombre" class="form-label mb-0"><strong>Costo</strong></label>
+      <p class="cantidad">{{ cantidad }} unidades.</p>
+      <p class="cantidad">{{ cantidad * precioEmpastado }} Bs.</p>
+    </div>
+  </section>
+</ng-template>

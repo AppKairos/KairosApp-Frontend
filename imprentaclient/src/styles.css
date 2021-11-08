@@ -1,5 +1,6 @@
 /* You can add global styles to this file, and also import other style files */
 /*BUTTONS*/
+
 .btn-main{
     background-color:#F39200;
     color: #5D213B;
@@ -34,4 +35,6 @@ body{
 *{
     font-family: 'Poppins', sans-serif;
     transition: 0.5 ease-in-out all;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }

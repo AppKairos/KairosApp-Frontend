@@ -27,6 +27,7 @@ import { LoginService } from './services/login.service';
 import { SelloService } from './services/sello.service';
 import { ReservaComponent } from './reserva/reserva.component';
 import { PreciosComponent } from './precios/precios.component';
+import { ReservaclienteComponent } from './reservacliente/reservacliente.component';
 
 @NgModule({
   declarations: [
@@ -41,7 +42,8 @@ import { PreciosComponent } from './precios/precios.component';
     EmpastadosComponent,
     CabeceraComponent,
     ReservaComponent,
-    PreciosComponent
+    PreciosComponent,
+    ReservaclienteComponent
   ],
   imports: [
     BrowserModule,

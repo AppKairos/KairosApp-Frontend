@@ -12,15 +12,36 @@ import { Router } from '@angular/router';
 export class EmpastadosComponent implements OnInit {
 
   profileForm = new FormGroup({
-    facultad: new FormControl('',[Validators.required]),
-    carrera: new FormControl('',[Validators.required]),
-    tituloTesis: new FormControl('',[Validators.required]),
-    trabajo: new FormControl('',[Validators.required]),
-    autor: new FormControl('',[Validators.required]),
-    tutor: new FormControl('',[Validators.required]),
+    facultad: new FormControl('',[
+      Validators.required,
+      Validators.pattern(new RegExp(/^[a-zA-Z0-9.\s,\"\'-_]*$/))
+    ]),
+    carrera: new FormControl('',[
+      Validators.required,
+      Validators.pattern(new RegExp(/^[a-zA-Z0-9.\s,\"\'-_]*$/))
+    ]),
+    tituloTesis: new FormControl('',[
+      Validators.required,
+      Validators.pattern(new RegExp(/^[a-zA-Z0-9.\s,\"\'-_]*$/))
+    ]),
+    trabajo: new FormControl('',[
+      Validators.required,
+      Validators.pattern(new RegExp(/^[a-zA-Z0-9.\s,\"\'-_]*$/))
+    ]),
+    autor: new FormControl('',[
+      Validators.required,
+      Validators.pattern(new RegExp(/^[a-zA-Z0-9.\s,\"\'-_]*$/))
+    ]),
+    tutor: new FormControl('',[
+      Validators.required,
+      Validators.pattern(new RegExp(/^[a-zA-Z0-9.\s,\"\'-_]*$/))
+    ]),
     mes: new FormControl('',[Validators.required]),
     anio: new FormControl(2020,[Validators.required]),
-    cantidad: new FormControl(0,[Validators.required]),
+    cantidad: new FormControl(0,[
+      Validators.required,
+      Validators.pattern(new RegExp(/^[1-9][0-9]*$/))
+    ]),
   });
 
   facultad = '';
@@ -36,6 +57,8 @@ export class EmpastadosComponent implements OnInit {
   //precio = 0;
   cliente = '';
 
+  precioEmpastado = 0;
+
   constructor(private empastadoService: EmpastadoService, private router: Router) { }
 
   ngOnInit(): void {
@@ -50,6 +73,8 @@ export class EmpastadosComponent implements OnInit {
     }else{
       this.cliente = '';
     }
+
+    this.getPrecioEmpastado();
   } 
 
   habilitado():boolean {
@@ -65,6 +90,11 @@ export class EmpastadosComponent implements OnInit {
     }
   }
 
+  validarCampo(campo:string):string {
+    const campoValidado = this.profileForm.get(campo);
+    return (!campoValidado.valid && campoValidado.touched) ? 'is-invalid' : campoValidado.touched ? 'is-valid' : '';
+  }
+
   guardarReserva() {
     let formulario = this.profileForm.value;
     let usuario = JSON.parse(localStorage.getItem('usuario')).usuario;
@@ -72,12 +102,19 @@ export class EmpastadosComponent implements OnInit {
     formulario.cantidad = +formulario.cantidad;
     formulario["idUsuario"] = usuario.id;
     formulario["tipoUsuario"] = usuario.tipoUsuario;
+    console.log(usuario.tipoUsuario);
     formulario["estado"] = true;
     console.log(formulario);
     this.empastadoService.reservarEmpastado(formulario).subscribe(response => {
       console.log(response);
-      alert('Empastado reservado. Clic en aceptar para regresar a productos');
-      this.router.navigate(['/productos']);
+      alert('Empastado reservado. Clic en aceptar para regresar.');
+      this.router.navigate(['/empastados']);
+    });
+  }
+
+  getPrecioEmpastado() {
+    this.empastadoService.getPrecioEmpastado().subscribe(response => {
+      this.precioEmpastado = +response["precio"];
     });
   }
 }

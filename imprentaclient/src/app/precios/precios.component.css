@@ -145,3 +145,45 @@ button {
 .disabledInput {
     background-color: white;
 }
+
+.opciones {
+    background-color: #5D213B;
+    color: white;
+    border-radius: 3px;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    margin: 15px;
+}
+
+.contenedorPrecioEmpastado {
+    display: -webkit-inline-flex;
+    display: -ms-inline-flexbox;
+    display: inline-flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    padding: 15px;
+    margin: 15px;
+    border-radius: 5px;
+    background-color: #5D213B;
+    color: white;
+}
+
+.tituloEmpastado {
+    margin-bottom: 5px;
+}
+.precioEmpastado {
+    margin: 0px;
+    padding: 0px;
+    margin-top: 5px;
+}
+
+.imagenEmpastado {
+    max-width: auto;
+    height: 80%;
+    border-radius: 5px;
+}
+.imagenEmpastado:hover {
+    opacity: 0.95;
+    box-shadow: 0 0 10px rgba(243, 146, 0, 1);
+    border: 0.5px groove rgba(243, 146, 0, 1);
+    transition: 0.3s ease all;
+}

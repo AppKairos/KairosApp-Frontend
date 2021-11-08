@@ -57,3 +57,13 @@ input[type=number] {
     /* padding-bottom: 5px; */
     min-width: 100px;
 }
+
+.error {
+    color: rgba(255,0,0,0.4);
+}
+
+.inputNew {
+    border: none;
+    border-bottom: 1px groove rgba(0, 0, 0, 0.2);
+    border-radius: 0px;
+}

@@ -20,15 +20,15 @@
                         </div>
 
                         <div class="mb-3">
-                            <label for="exampleInputEmail1" class="form-label">C.I.</label>
-                            <input type="number" class="form-control inputNew" formControlName="ci" [class]="validarCampo('ci')">
+                            <label for="exampleInputEmail1" class="form-label">Correo</label>
+                            <input type="text" class="form-control inputNew" formControlName="email" [class]="validarCampo('email')">
 
-                            <div *ngIf="profileForm.get('ci').invalid && (profileForm.get('ci').dirty || profileForm.get('ci').touched)">
-                                <div *ngIf="profileForm.get('ci').errors?.required" class="error">
+                            <div *ngIf="profileForm.get('email').invalid && (profileForm.get('email').dirty || profileForm.get('email').touched)">
+                                <div *ngIf="profileForm.get('email').errors?.required" class="error">
                                     Este campo es obligatorio.
                                 </div>
-                                <div *ngIf="profileForm.get('ci').errors?.pattern" class="error">
-                                    Entre 7 y 8 caracteres, solo digitos
+                                <div *ngIf="profileForm.get('email').errors?.pattern" class="error">
+                                    Ingrese un correo valido
                                 </div>
                             </div>
                         </div>

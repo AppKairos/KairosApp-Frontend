@@ -18,7 +18,7 @@
                                 </div> -->
                             </div>
                         </div>
-                        <div class="mb-3">
+                        <!-- <div class="mb-3">
                             <label for="ci" class="form-label">C.I.</label>
                             <input type="number" class="form-control inputNew" formControlName="ci" [class]="validarCampo('ci')">
                             
@@ -30,7 +30,7 @@
                                     Entre 7 y 8 caracteres, solo digitos
                                 </div>
                             </div>
-                        </div>
+                        </div> -->
 
                         <div class="mb-3">
                             <label for="nombre" class="form-label">Nombre Completo</label>
@@ -48,13 +48,13 @@
                         
                         <div class="mb-3">
                             <label for="correo" class="form-label">Correo Electrónico</label>
-                            <input type="text" class="form-control inputNew" formControlName="correo" [class]="validarCampo('correo')">
+                            <input type="text" class="form-control inputNew" formControlName="email" [class]="validarCampo('email')">
             
-                            <div *ngIf="profileForm.get('correo').invalid && (profileForm.get('correo').dirty || profileForm.get('correo').touched)">
-                                <div *ngIf="profileForm.get('correo').errors?.required" class="error">
+                            <div *ngIf="profileForm.get('email').invalid && (profileForm.get('email').dirty || profileForm.get('email').touched)">
+                                <div *ngIf="profileForm.get('email').errors?.required" class="error">
                                     Este campo es obligatorio.
                                 </div>
-                                <div *ngIf="profileForm.get('correo').errors?.pattern && !profileForm.get('correo').errors?.required" class="error">
+                                <div *ngIf="profileForm.get('email').errors?.pattern && !profileForm.get('email').errors?.required" class="error">
                                     Ingrese un correo valido
                                 </div>
                             </div>

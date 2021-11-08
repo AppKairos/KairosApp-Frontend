@@ -20,9 +20,9 @@ import { FacebookLoginProvider, GoogleLoginProvider } from "angularx-social-logi
 export class LoginComponent implements OnInit, OnDestroy {
 
   profileForm = new FormGroup({
-    ci: new FormControl(0,[
+    email: new FormControl('',[
       Validators.required,
-      Validators.pattern(new RegExp(/^[\d]{7,8}$/))
+      Validators.pattern(new RegExp(/^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/))
     ]),
     password: new FormControl('',[
       Validators.required,
@@ -40,6 +40,12 @@ export class LoginComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
+
+    // this.cabeceraService.storeUser("vacio");
+    // try {
+    //   this.authService.signOut(); 
+    // } catch (error) { console.log(error) }
+
     if(!(JSON.parse(localStorage.getItem('usuario'))["token"] == undefined)){
       this.router.navigate(['/productos']);
     }
@@ -71,8 +77,9 @@ export class LoginComponent implements OnInit, OnDestroy {
 
   onSubmit(): void {
     this.loginService.login(this.profileForm.value).subscribe(response => {
+      console.log(response);
       if(response["token"]){
-        alert('Usuario verificado');
+        //alert('Usuario verificado');
         this.cabeceraService.storeUser(response);
         this.router.navigate(['/productos']);
       }else{
@@ -92,11 +99,12 @@ export class LoginComponent implements OnInit, OnDestroy {
 
   loginGoogle(usuarioGoogleLogin: any): void {
     this.loginService.loginGoogle(usuarioGoogleLogin).subscribe(response => {
-      if(!(response["authToken"] === "")){
+      console.log(response);
+      if(!(response["token"] === "")){
         let usuario = {};
-        usuario['token'] = response['authToken'];
+        usuario['token'] = response['token'];
         usuario['usuario'] = response;
-        alert('Usuario verificado');
+        //alert('Usuario verificado');
         this.cabeceraService.storeUser(usuario);
         this.router.navigate(['/productos']);
       }else{

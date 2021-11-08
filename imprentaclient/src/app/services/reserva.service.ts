@@ -26,7 +26,20 @@ export class ReservaService {
   getReservasEmpastados(): Observable<Response>{
     return this.http.get<Response>(this.myAppUrl + this.myApiUrl + '?nombre=Empastado', this.httpOptions);
   }
+  
   getEmpastadosReservas(): Observable<Response>{
     return this.http.get<Response>(this.myAppUrl + this.myApiUrl + 'empastados', this.httpOptions);
+  }
+
+  putReservaTerminadoTrue(idReserva: any): Observable<Response> {
+    return this.http.put<Response>(this.myAppUrl + this.myApiUrl + idReserva, {terminado: true}, this.httpOptions);
+  }
+
+  buscarReservasNombre(nombre: string): Observable<Response> {
+    return this.http.get<Response>(this.myAppUrl + this.myApiUrl + 'empastadosbyNombre/' + nombre, this.httpOptions);
+  }
+
+  getReservasUsuario(idUsuario: any): Observable<Response> {
+    return this.http.get<Response>(this.myAppUrl + this.myApiUrl + 'empastados/' + idUsuario, this.httpOptions);
   }
 }

@@ -16,15 +16,27 @@ import { PrecioService } from '../services/precio.service';
 export class CotizacionesComponent implements OnInit {
 
   profileForm = new FormGroup({
-    cantidad: new FormControl(),
-    Tam_papel: new FormControl(''),
-    color: new FormControl(''),
-    tipo_papel: new FormControl(''),
-    gramaje_papel: new FormControl(''),
-    tam_placa: new FormControl(''),
-    precio_design: new FormControl(),
-    precio_acabado: new FormControl(),
-    ganancia: new FormControl()
+    cantidad: new FormControl(0,[
+      Validators.required,
+      Validators.pattern(new RegExp(/^[1-9][0-9]*$/))
+    ]),
+    Tam_papel: new FormControl('',[Validators.required]),
+    color: new FormControl('',[Validators.required]),
+    tipo_papel: new FormControl('',[Validators.required]),
+    gramaje_papel: new FormControl('',[Validators.required]),
+    tam_placa: new FormControl('',[Validators.required]),
+    precio_design: new FormControl(0,[
+      Validators.required,
+      Validators.pattern(new RegExp(/^[1-9][0-9]*$/))
+    ]),
+    precio_acabado: new FormControl(0,[
+      Validators.required,
+      Validators.pattern(new RegExp(/^[1-9][0-9]*$/))
+    ]),
+    ganancia: new FormControl(0,[
+      Validators.required,
+      Validators.pattern(new RegExp(/^[0].[0-9]*[1-9]+[0-9]*$/))
+    ])
   });
 
   precios = [];
@@ -40,6 +52,11 @@ export class CotizacionesComponent implements OnInit {
     this.getPrecios();
   }
   
+  validarCampo(campo:string):string {
+    const campoValidado = this.profileForm.get(campo);
+    return (!campoValidado.valid && campoValidado.touched) ? 'is-invalid' : campoValidado.touched ? 'is-valid' : '';
+  }
+
   cotizarAfiche(){
     console.log(this.profileForm.value);
     this.afichesService.cotizarAfiche(this.profileForm.value).subscribe(response => {

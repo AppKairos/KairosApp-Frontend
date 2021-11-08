@@ -19,15 +19,11 @@ import { FacebookLoginProvider, GoogleLoginProvider } from "angularx-social-logi
 export class RegistrarseComponent implements OnInit {
 
   profileForm = new FormGroup({
-    ci: new FormControl(0,[
-      Validators.required,
-      Validators.pattern(new RegExp(/^[\d]{7,8}$/))
-    ]),
     nombre: new FormControl('',[
       Validators.required,
       Validators.pattern(new RegExp( /^([A-Za-z,.'-]{2,12}\s?){1,}/))
     ]),
-    correo: new FormControl('',[
+    email: new FormControl('',[
       Validators.required,
       Validators.pattern(new RegExp(/^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/))
     ]),
@@ -44,22 +40,12 @@ export class RegistrarseComponent implements OnInit {
   // socialUser = {};
   // isLoggedin: boolean = null;
 
-  constructor(private authService: SocialAuthService, private registrarseService: RegistrarseService, private modalservice: NgbModal, private router: Router) { }
+  constructor(private authService1: SocialAuthService, private registrarseService: RegistrarseService, private modalservice: NgbModal, private router: Router) { }
 
   ngOnInit(): void {
-    this.authService.authState.subscribe((user) => {
-      let socialUser = {};
-      socialUser['authToken'] = user['authToken'];
-      socialUser['idToken'] = user['idToken'];
-      socialUser['name'] = user['name'];
-      socialUser['firstName'] = user['firstName'];
-      socialUser['lastName'] = user['lastName'];
-      socialUser['email'] = user['email'];
-      socialUser['rol'] = 'cliente';
-      socialUser['activo'] = true;
-      socialUser['tipoUsuario'] = 'Gmail';
-      this.registrarGoogle(socialUser);
-    });
+    // this.authService1.authState.subscribe((user) => {
+      
+    // });
   }
 
   validarCampo(campo:string):string {
@@ -70,27 +56,38 @@ export class RegistrarseComponent implements OnInit {
   onSubmit() {
     this.registrarseService.registrarse(this.profileForm.value).subscribe(response => {
       //Object.assign([], response);
-      alert('Registrado correctamente');
+      //alert('Registrado correctamente');
       this.router.navigate(['/login']);
     });
   }
 
   registrarGoogle(socialUser: any): void {
     this.registrarseService.registrarseGoogle(socialUser).subscribe(response => {
-      alert('Registrado correctamente');
+      //alert('Registrado correctamente');
       this.router.navigate(['/login']);
     });
   }
 
-  iniciarGoogle(): void {
-    this.authService.signIn(GoogleLoginProvider.PROVIDER_ID);
+  async iniciarGoogle(): Promise<void> {
+    let user = await this.authService1.signIn(GoogleLoginProvider.PROVIDER_ID);
+    let socialUser = {};
+    socialUser['authToken'] = user['authToken'];
+    socialUser['idToken'] = user['idToken'];
+    socialUser['name'] = user['name'];
+    socialUser['firstName'] = user['firstName'];
+    socialUser['lastName'] = user['lastName'];
+    socialUser['email'] = user['email'];
+    socialUser['rol'] = 'cliente';
+    socialUser['activo'] = true;
+    socialUser['tipoUsuario'] = 'Gmail';
+    this.registrarGoogle(socialUser);
   }
 
   iniciarFacebook(): void {
-    this.authService.signIn(FacebookLoginProvider.PROVIDER_ID);
+    this.authService1.signIn(FacebookLoginProvider.PROVIDER_ID);
   }
 
   logoutGoogleFacebook(): void {
-    this.authService.signOut();
+    this.authService1.signOut();
   }
 }

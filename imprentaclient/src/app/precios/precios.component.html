@@ -1,5 +1,5 @@
 <!-- PRECIOS -->
-<section class="mt-5 pt-4" style="background-color: #5D213B; color: white;">
+<section class="mt-5 pt-4 opciones">
     <div class="container">
         <div class="row">
             <div class="col">
@@ -55,10 +55,10 @@
     </div>
 </section>
 
-<section class="mt-5">
+<!-- <section class="mt-5">
     <div class="container">
         <div class="row">
-            <!-- <div class="col">
+            <div class="col">
                 <div class="dropdown">
                     <button class="btn btn-secondary dropdown-toggle filtrar" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
                         <i class="fas fa-filter filtrarIcono"></i>
@@ -70,7 +70,7 @@
                       <li><a class="dropdown-item" href="#">Opción 3</a></li>
                     </ul>
                 </div>
-            </div> -->
+            </div>
             <div class="col col-xl-5 col-lg-5 col-md-5 col-sm-5">
                 <input class="form-control buscar" type="search" placeholder="Buscar" aria-label="Search">
             </div>
@@ -79,8 +79,9 @@
             </div>
         </div>
     </div>
-  </section>
-  <section class="mt-4">
+  </section> -->
+
+  <section class="mt-5">
     <div class="container">
         <div class="row">
             <div class="col">
@@ -104,7 +105,7 @@
                             <td>{{ precio.precioresma }} Bs.</td>
                             <td>{{ precio.precioneto }} Bs.</td>
                             <td>
-                                <i class="fas fa-edit accionEditar" (click)="openModalUpdatePrecio(udpatePrecioModal,precio.id)"></i>
+                                <i class="fas fa-edit accionEditar" (click)="openModalUpdatePrecio(udpatePrecioModal,precio.id,precio.tipo)"></i>
                                 <i class="fas fa-trash accionEliminar" (click)="openModalDeletePrecio(deletePrecioModal,precio.id,precio.nombre)"></i>
                             </td>
                           </tr>
@@ -125,6 +126,14 @@
                 </button>
             </div>
         </div>
+    </div>
+</section>
+
+<section class="mt-4">
+    <div class="contenedorPrecioEmpastado">
+        <h6 class="tituloEmpastado"><strong>Empastados</strong></h6>
+        <img src="../assets/empastado.jpeg" class="imagenEmpastado img-fluid" (click)="openModalUpdatePrecioEmpastado(updatePrecioEmpastado)">
+        <h6 class="precioEmpastado"><strong>{{ precioEmpastados }} Bs.</strong></h6>
     </div>
 </section>
 
@@ -149,7 +158,7 @@
             </div>
         </div>
 
-        <div class="mb-3">
+        <!-- <div class="mb-3">
             <label for="precioneto" class="form-label">Precio neto</label>
             <input type="text" class="form-control inputNew" formControlName="precioneto" [class]="validarCampoAddPrecioForm('precioneto')">
 
@@ -161,7 +170,7 @@
                     Solo numeros con decimales.
                 </div>
             </div>
-        </div>
+        </div> -->
 
         <div class="mb-3">
             <label for="tipo" class="form-label">Tipo</label>
@@ -236,7 +245,7 @@
         </div>
         <div class="mb-3">
             <label for="nombre" class="form-label">Nombre</label>
-            <input type="text" class="form-control inputNew" formControlName="nombre" [class]="validarCampoUpdatePrecioForm('nombre')">
+            <input type="text" class="form-control inputNew disabledInput" [ngModel]="nombrePrecioTipoPapel" formControlName="nombre" disabled [class]="validarCampoUpdatePrecioForm('nombre')">
             
             <div *ngIf="updatePrecioForm.get('nombre').invalid && (updatePrecioForm.get('nombre').dirty || updatePrecioForm.get('nombre').touched)">
                 <div *ngIf="updatePrecioForm.get('nombre').errors?.required" class="error">
@@ -248,7 +257,7 @@
             </div>
         </div>
 
-        <div class="mb-3">
+        <!-- <div class="mb-3">
             <label for="precioneto" class="form-label">Precio neto</label>
             <input type="text" class="form-control inputNew" formControlName="precioneto" [class]="validarCampoUpdatePrecioForm('precioneto')">
 
@@ -260,7 +269,7 @@
                     Solo numeros con decimales.
                 </div>
             </div>
-        </div>
+        </div> -->
 
         <div class="mb-3">
             <label for="tipo" class="form-label">Tipo</label>
@@ -336,6 +345,36 @@
         <div class="row justify-content-center">
             <div class="col col-12 col-md-12 col-lg-12">
                 <button (click)="deletePrecio()" class="btn btn-danger">Eliminar</button>
+            </div>
+        </div>
+    </form>
+</ng-template>
+
+<ng-template #updatePrecioEmpastado let-modal>
+    <i class="fas fa-times-circle cerrar" (click)="modal.dismiss()"></i>
+
+    <form [formGroup]="updatePrecioEmpastadoForm" class="m-5">
+        <div class="mb-3">
+            <h1>Editar Precio</h1>
+        </div>
+
+        <div class="mb-3">
+            <label for="precio" class="form-label">Precio</label>
+            <input type="number" class="form-control inputNew" formControlName="precio" [class]="validarCampoUpdatePrecioEmpastadoForm('precio')">
+
+            <div *ngIf="updatePrecioEmpastadoForm.get('precio').invalid && (updatePrecioEmpastadoForm.get('precio').dirty || updatePrecioEmpastadoForm.get('precio').touched)">
+                <div *ngIf="updatePrecioEmpastadoForm.get('precio').errors?.required" class="error">
+                    Este campo es obligatorio.
+                </div>
+                <div *ngIf="updatePrecioEmpastadoForm.get('precio').errors?.pattern && !updatePrecioEmpastadoForm.get('precio').errors?.required" class="error">
+                    Solo numeros mayores a 0.
+                </div>
+            </div>
+        </div>
+
+        <div class="row justify-content-center">
+            <div class="col col-12 col-md-12 col-lg-12">
+                <button (click)="putPrecioEmpastado()" [disabled]="!updatePrecioEmpastadoForm.valid" class="btn btn-main btnNew"><i class="fas fa-save"></i></button>
             </div>
         </div>
     </form>

@@ -11,54 +11,111 @@
         <div class="row">
             <div class="col-12 col-xl-4 col-lg-4 col-md-4 col-sm-12">
                 <label for="tam" class="form-label"><strong>Tamaño de papel</strong></label>
-                <select id="tam" class="form-select input" aria-label="Default select example" formControlName="Tam_papel">
+                <select id="tam" class="form-select input inputNew" aria-label="Default select example" formControlName="Tam_papel" [class]="validarCampo('Tam_papel')">
                     <option selected>Seleccione una opcion</option>
                     <option value="Carta">Carta</option>
                     <option value="Legal">Legal</option>
                     <option value="Cuarto Oficio">Cuarto Oficio</option>
                 </select>
+                <div *ngIf="profileForm.get('Tam_papel').invalid && (profileForm.get('Tam_papel').dirty || profileForm.get('Tam_papel').touched)">
+                    <div *ngIf="profileForm.get('Tam_papel').errors?.required" class="error">
+                        Este campo es obligatorio.
+                    </div>
+                </div>
 
                 <label for="placa" class="form-label"><strong>Tamaño de placa</strong></label>
-                <select id="placa" class="form-select input" aria-label="Default select example" formControlName="tam_placa">
+                <select id="placa" class="form-select input inputNew" aria-label="Default select example" formControlName="tam_placa" [class]="validarCampo('tam_placa')">
                     <option selected>Seleccione una opcion</option>
                     <option value="GTO 53X33">GTO 53X33</option>
                     <option value="ROLAND 52X72">ROLAND 52X72</option>
                 </select>
+                <div *ngIf="profileForm.get('tam_placa').invalid && (profileForm.get('tam_placa').dirty || profileForm.get('tam_placa').touched)">
+                    <div *ngIf="profileForm.get('tam_placa').errors?.required" class="error">
+                        Este campo es obligatorio.
+                    </div>
+                </div>
 
                 <label for="color" class="form-label"><strong>Color Impresión</strong></label>
-                <select id="color" class="form-select input" aria-label="Default select example" formControlName="color">
+                <select id="color" class="form-select input inputNew" aria-label="Default select example" formControlName="color" [class]="validarCampo('color')">
                     <option selected>Seleccione una opcion</option>
                     <option value="Full Color">Full Color</option>
                     <option value="Duo Tono">Duo Tono</option>
                     <option value="Mono Color">Mono Color</option>
                 </select>
+                <div *ngIf="profileForm.get('color').invalid && (profileForm.get('color').dirty || profileForm.get('color').touched)">
+                    <div *ngIf="profileForm.get('color').errors?.required" class="error">
+                        Este campo es obligatorio.
+                    </div>
+                </div>
 
                 <label for="tipo" class="form-label"><strong>Tipo de papel</strong></label>
-                <select id="tipo" (change)="getGramajesTipo($event.target.value)" class="form-select input" aria-label="Default select example" formControlName="tipo_papel">
+                <select id="tipo" (change)="getGramajesTipo($event.target.value)" class="form-select input inputNew" aria-label="Default select example" formControlName="tipo_papel" [class]="validarCampo('tipo_papel')">
                     <option selected>Seleccione una opcion</option>
                     <option *ngFor="let precio of precios" [value]="precio">{{ precio }}</option>
                 </select>
-                
+                <div *ngIf="profileForm.get('tipo_papel').invalid && (profileForm.get('tipo_papel').dirty || profileForm.get('tipo_papel').touched)">
+                    <div *ngIf="profileForm.get('tipo_papel').errors?.required" class="error">
+                        Este campo es obligatorio.
+                    </div>
+                </div>
+
                 <label for="gramaje" class="form-label"><strong>Gramaje de papel</strong></label>
-                <select id="gramaje" class="form-select input" aria-label="Default select example" formControlName="gramaje_papel">
+                <select id="gramaje" class="form-select input inputNew" aria-label="Default select example" formControlName="gramaje_papel" [class]="validarCampo('gramaje_papel')">
                     <option selected>Seleccione una opcion</option>
                     <option *ngFor="let gramaje of gramajesPorNombre" [value]="gramaje">{{ gramaje }}</option>
                 </select>
+                <div *ngIf="profileForm.get('gramaje_papel').invalid && (profileForm.get('gramaje_papel').dirty || profileForm.get('gramaje_papel').touched)">
+                    <div *ngIf="profileForm.get('gramaje_papel').errors?.required" class="error">
+                        Este campo es obligatorio.
+                    </div>
+                </div>
             </div>
             <div class="col-12 col-xl-4 col-lg-4 col-md-4 col-sm-12  pb-5">
                 <label for="cantidad" class="form-label"><strong>Cantidad de Afiches</strong></label>
-                <input type="number" class="form-control input" id="cantidad" aria-describedby="afiche"  formControlName="cantidad">
+                <input type="number" class="form-control input inputNew" id="cantidad" aria-describedby="afiche"  formControlName="cantidad" [class]="validarCampo('cantidad')">
+                <div *ngIf="profileForm.get('cantidad').invalid && (profileForm.get('cantidad').dirty || profileForm.get('cantidad').touched)">
+                    <div *ngIf="profileForm.get('cantidad').errors?.required" class="error">
+                        Este campo es obligatorio.
+                    </div>
+                    <div *ngIf="profileForm.get('cantidad').errors?.pattern && !profileForm.get('cantidad').errors?.required" class="error">
+                        Debe ser mayor a 0.
+                    </div>
+                </div>
 
                 <label for="pDisenio" class="form-label"><strong>Precio Diseño</strong></label>
-                <input type="number" class="form-control input" id="pDisenio" aria-describedby="afiche" formControlName="precio_design">
+                <input type="number" class="form-control input inputNew" id="pDisenio" aria-describedby="afiche" formControlName="precio_design" [class]="validarCampo('precio_design')">
+                <div *ngIf="profileForm.get('precio_design').invalid && (profileForm.get('precio_design').dirty || profileForm.get('precio_design').touched)">
+                    <div *ngIf="profileForm.get('precio_design').errors?.required" class="error">
+                        Este campo es obligatorio.
+                    </div>
+                    <div *ngIf="profileForm.get('precio_design').errors?.pattern && !profileForm.get('precio_design').errors?.required" class="error">
+                        Debe ser mayor a 0.
+                    </div>
+                </div>
 
                 <label for="pAcabado" class="form-label"><strong>Precio Acabado</strong></label>
-                <input type="number" class="form-control input" id="pAcabado" aria-describedby="afiche" formControlName="precio_acabado">
+                <input type="number" class="form-control input inputNew" id="pAcabado" aria-describedby="afiche" formControlName="precio_acabado" [class]="validarCampo('precio_acabado')">
+                <div *ngIf="profileForm.get('precio_acabado').invalid && (profileForm.get('precio_acabado').dirty || profileForm.get('precio_acabado').touched)">
+                    <div *ngIf="profileForm.get('precio_acabado').errors?.required" class="error">
+                        Este campo es obligatorio.
+                    </div>
+                    <div *ngIf="profileForm.get('precio_acabado').errors?.pattern && !profileForm.get('precio_acabado').errors?.required" class="error">
+                        Debse ser mayor a 0.
+                    </div>
+                </div>
 
                 <label for="ganancia" class="form-label"><strong>Gananacia %</strong></label>
-                <input type="number" class="form-control input" id="ganancia" aria-describedby="afiche" formControlName="ganancia">
-            
-                <button type="submit" class="btn btn-main btnCotizar">Cotizar</button>
+                <input type="number" class="form-control input inputNew" id="ganancia" aria-describedby="afiche" formControlName="ganancia" [class]="validarCampo('ganancia')">
+                <div *ngIf="profileForm.get('ganancia').invalid && (profileForm.get('ganancia').dirty || profileForm.get('ganancia').touched)">
+                    <div *ngIf="profileForm.get('ganancia').errors?.required" class="error">
+                        Este campo es obligatorio.
+                    </div>
+                    <div *ngIf="profileForm.get('ganancia').errors?.pattern && !profileForm.get('ganancia').errors?.required" class="error">
+                        Debe ser entre 0 y 1.
+                    </div>
+                </div>
+
+                <button type="submit" class="btn btn-main btnCotizar" [disabled]="!profileForm.valid">Cotizar</button>
             </div>
             <div class="col-12 col-xl-4 col-lg-4 col-md-4 col-sm-12">
                 <div class="row contenedorPrecios">

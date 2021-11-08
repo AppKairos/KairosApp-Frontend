@@ -33,6 +33,7 @@ export class CabeceraComponent implements OnInit, OnDestroy {
     
     this.observable$ = this.cabeceraService.getSubject$();
     this.observable$.subscribe(data => {
+      console.log(data);
       if(data.usuario["token"]){
         this.visible = false;
         localStorage.setItem('visible',JSON.stringify(this.visible));

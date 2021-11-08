@@ -23,6 +23,23 @@
     </div>
   </div>
 </section>
+
+<section>
+  <div class="container">
+      <div class="row">
+          <div class="col-7 col-xl-5 col-lg-5 col-md-5 col-sm-5">
+              <input id="buscar" class="form-control buscar" type="search" placeholder="Buscar" aria-label="Search">
+          </div>
+          <div class="col-5 col-xl-2 col-lg-2 col-md-2 col-sm-3">
+            <div class="contenedorFlex">
+              <button class="form-control btn btn-primary btnBuscar" style="background-color: #5D213B;border: 0px;" (click)="buscarReservasNombre()"><i class="fas fa-search"></i></button>
+              <button class="form-control btn-warning btnBuscar" style="background-color: #F39200;border: 0px;" (click)="limpiarBusqueda()"><i class="fas fa-broom"></i></button>
+            </div>
+          </div>
+      </div>
+  </div>
+</section>
+
 <section class="mt-4">
   <div class="container">
   <div class="row">
@@ -35,6 +52,7 @@
               <th scope="col" class="tableHead">Email</th>
               <th scope="col" class="tableHead">Titulo de empastado</th>
               <th scope="col" class="tableHead">Abrir</th>
+              <th scope="col" class="tableHead">Entregar</th>
             </tr>
           </thead>
           <tbody>
@@ -43,6 +61,7 @@
               <td>{{ empastadoCliente.email }}</td>
               <td>{{ empastadoCliente.tituloTesis }}</td>
               <td><i class="fas fa-images accionVer" (click)="openModal(empastadoModal, empastadoCliente)"></i></td>
+              <td><i class="fas fa-check-square accionTerminado" (click)="openModalTerminado(terminadoModal,empastadoCliente.idreserva)"></i></td>
             </tr>
           </tbody>
         </table>
@@ -61,49 +80,36 @@
       <h1>Empastado</h1>
     </div>
     
-    <div class="mb-3">
-      <label for="nombre" class="form-label"><strong>Facultad</strong></label>
-      <p>{{ facultad }}</p>
+    <div class="container1">
+      <img class="imgEmpastado imagenEmpastado img-fluid" src="/assets/plantilla-empastado.png" alt="photo1">
+      <div class="facultad">{{facultad}}</div>
+      <div class="carrera">{{carrera}}</div>
+      <div class="titulo">{{titulo}}</div>
+      <div class="trabajo">{{trabajo}}</div>
+      <div class="autor">{{autor}}</div>
+      <div class="tutor">{{tutor}}</div>
+      <div class="mes">{{mes}}</div>
+      <div class="anio">{{anio}}</div>
     </div>
     
+    <div class="mb-3 mt-3">
+      <label for="nombre" class="form-label mb-0"><strong>Costo</strong></label>
+      <p class="cantidad">{{ cantidad }} unidades.</p>
+      <p class="cantidad">{{ cantidad * precioEmpastado }} Bs.</p>
+    </div>
+  </section>
+</ng-template>
+
+<ng-template #terminadoModal let-modal>
+  <i class="fas fa-times-circle cerrar" (click)="modal.dismiss()"></i>
+
+  <section class="empastado m-4">
     <div class="mb-3">
-      <label for="nombre" class="form-label"><strong>Carrera</strong></label>
-      <p>{{ carrera }}</p>
+      <h3>Marcar como terminado?</h3>
     </div>
     
-    <div class="mb-3">
-      <label for="nombre" class="form-label"><strong>Titulo</strong></label>
-      <p>{{ titulo }}</p>
-    </div>
-    
-    <div class="mb-3">
-      <label for="nombre" class="form-label"><strong>Trabajo</strong></label>
-      <p>{{ trabajo }}</p>
-    </div>
-    
-    <div class="mb-3">
-      <label for="nombre" class="form-label"><strong>Autor</strong></label>
-      <p>{{ autor }}</p>
-    </div>
-    
-    <div class="mb-3">
-      <label for="nombre" class="form-label"><strong>Tutor</strong></label>
-      <p>{{ tutor }}</p>
-    </div>
-    
-    <div class="mb-3">
-      <label for="nombre" class="form-label"><strong>Mes</strong></label>
-      <p>{{ mes }}</p>
-    </div>
-    
-    <div class="mb-3">
-      <label for="nombre" class="form-label"><strong>Año</strong></label>
-      <p>{{ anio }}</p>
-    </div>
-    
-    <div class="mb-3">
-      <label for="nombre" class="form-label"><strong>Cantidad</strong></label>
-      <p>{{ cantidad }}</p>
+    <div class="row">
+      <button class="btn btn-warning btnNew" (click)="putTerminadoTrue()"><i class="fas fa-check"></i> Confirmar</button>
     </div>
   </section>
 </ng-template>

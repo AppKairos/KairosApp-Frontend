@@ -50,15 +50,15 @@
 
 @media (max-width: 991px) {
     .altoImg {
-        padding-top: 50px;
-        padding-bottom: 50px;
+        padding-top: 30px;
+        padding-bottom: 30px;
     }
 }
 
 @media (min-width: 992px) {  
     .altoImg {
-        padding-top: 270px;
-        padding-bottom: 270px;
+        padding-top: 230px;
+        padding-bottom: 230px;
     }
 }
 

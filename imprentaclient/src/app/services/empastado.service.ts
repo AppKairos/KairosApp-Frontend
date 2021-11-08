@@ -30,4 +30,12 @@ export class EmpastadoService {
   reservarEmpastado(empastado: any): Observable<Response> {
     return this.http.post<Response>(this.myAppUrl + this.myApiUrl, empastado, this.httpOptions);
   }
+
+  getPrecioEmpastado(): Observable<Response> {
+    return this.http.get<Response>(this.myAppUrl + 'api/precioacabado/Empastado', this.httpOptions);
+  }
+
+  updatePrecioEmpastado(precioEmpastado: any): Observable<Response> {
+    return this.http.put<Response>(this.myAppUrl + 'api/precioacabado/Empastado', precioEmpastado, this.httpOptions);
+  }
 }

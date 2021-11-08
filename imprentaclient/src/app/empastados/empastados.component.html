@@ -1,58 +1,105 @@
 <section>
     <div class="container">
-      <div class="row pt-5">
+      <div class="row pt-5 mb-4">
           <div class="col-12">
             <h1 class="text-center">Empastados</h1>
           </div>
       </div>
       <div class="row">
-          <div class="col-12 col-lg-6 ">
-            <div class="container1">
-              <img class="imgEmpastado imagenEmpastado img-fluid" src="/assets/plantilla-empastado.png" alt="photo1">
-              <div class="facultad">{{facultad}}</div>
-              <div class="carrera">{{carrera}}</div>
-              <div class="titulo">{{titulo}}</div>
-              <div class="trabajo">{{trabajo}}</div>
-              <div class="autor">{{autor}}</div>
-              <div class="tutor">{{tutor}}</div>
-              <div class="mes">{{mes}}</div>
-              <div class="anio">{{anio}}</div>
-            </div>
-          </div>
-          <div class="col-12 col-lg-6 pt-5">
+          <div class="col-12 col-lg-6 pt-5 mb-5">
             <div class="col d-flex justify-content-center">
-              <div class="card" style="width: 34rem; background-color: #DCDBDD;">
+              <div class="card" style="width: 34rem;">
                   <div class="card-body">
                       <form [formGroup]="profileForm">
                           <div class="mb-3">
                             <label for="facultad" class="form-label">Facultad</label>
-                            <input type="text" class="form-control" id="facultad" aria-describedby="facultad" [(ngModel)]="facultad" formControlName="facultad">
+                            <input type="text" class="form-control inputNew" id="facultad" aria-describedby="facultad" [(ngModel)]="facultad" formControlName="facultad" [class]="validarCampo('facultad')">
+                          
+                            <div *ngIf="profileForm.get('facultad').invalid && (profileForm.get('facultad').dirty || profileForm.get('facultad').touched)">
+                              <div *ngIf="profileForm.get('facultad').errors?.required" class="error">
+                                  Este campo es obligatorio.
+                              </div>
+                              <div *ngIf="profileForm.get('facultad').errors?.pattern" class="error">
+                                  Sin caracteres especiales.
+                              </div>
+                            </div>
                           </div>
+                          
                           <div class="mb-3">
                             <label for="carrera" class="form-label">Carrera</label>
-                            <input type="text" class="form-control" id="carrera" aria-describedby="carrera" [(ngModel)]="carrera" formControlName="carrera">
+                            <input type="text" class="form-control inputNew" id="carrera" aria-describedby="carrera" [(ngModel)]="carrera" formControlName="carrera" [class]="validarCampo('carrera')">
+                          
+                            <div *ngIf="profileForm.get('carrera').invalid && (profileForm.get('carrera').dirty || profileForm.get('carrera').touched)">
+                              <div *ngIf="profileForm.get('carrera').errors?.required" class="error">
+                                  Este campo es obligatorio.
+                              </div>
+                              <div *ngIf="profileForm.get('carrera').errors?.pattern" class="error">
+                                  Sin caracteres especiales.
+                              </div>
+                            </div>
                           </div>
+                          
                           <div class="mb-3">
                             <label for="titulo" class="form-label">Título Tesis</label>
-                            <input type="text" class="form-control" id="titulo" aria-describedby="titulo" [(ngModel)]="titulo" formControlName="tituloTesis">
+                            <input class="form-control inputNew" id="titulo" aria-describedby="titulo" [(ngModel)]="titulo" formControlName="tituloTesis" [class]="validarCampo('tituloTesis')">
+                                                    
+                            <div *ngIf="profileForm.get('tituloTesis').invalid && (profileForm.get('tituloTesis').dirty || profileForm.get('tituloTesis').touched)">
+                              <div *ngIf="profileForm.get('tituloTesis').errors?.required" class="error">
+                                  Este campo es obligatorio.
+                              </div>
+                              <div *ngIf="profileForm.get('tituloTesis').errors?.pattern" class="error">
+                                  Sin caracteres especiales.
+                              </div>
+                            </div>
                           </div>
+                          
                           <div class="mb-3">
                             <label for="trabajo" class="form-label">Trabajo en</label>
-                            <input type="text" class="form-control" id="trabajo" aria-describedby="trabajo" [(ngModel)]="trabajo" formControlName="trabajo">
+                            <input type="text" class="form-control inputNew" id="trabajo" aria-describedby="trabajo" [(ngModel)]="trabajo" formControlName="trabajo" [class]="validarCampo('trabajo')">
+                                                    
+                            <div *ngIf="profileForm.get('trabajo').invalid && (profileForm.get('trabajo').dirty || profileForm.get('trabajo').touched)">
+                              <div *ngIf="profileForm.get('trabajo').errors?.required" class="error">
+                                  Este campo es obligatorio.
+                              </div>
+                              <div *ngIf="profileForm.get('trabajo').errors?.pattern" class="error">
+                                  Sin caracteres especiales.
+                              </div>
+                            </div>
                           </div>
+                          
                           <div class="mb-3">
                             <label for="autor" class="form-label">Autor</label>
-                            <input type="text" class="form-control" id="autor" aria-describedby="autor" [(ngModel)]="autor" formControlName="autor">
+                            <input type="text" class="form-control inputNew" id="autor" aria-describedby="autor" [(ngModel)]="autor" formControlName="autor" [class]="validarCampo('autor')">
+                                                    
+                            <div *ngIf="profileForm.get('autor').invalid && (profileForm.get('autor').dirty || profileForm.get('autor').touched)">
+                              <div *ngIf="profileForm.get('autor').errors?.required" class="error">
+                                  Este campo es obligatorio.
+                              </div>
+                              <div *ngIf="profileForm.get('autor').errors?.pattern" class="error">
+                                  Sin caracteres especiales.
+                              </div>
+                            </div>
                           </div>
+                          
                           <div class="mb-3">
                             <label for="tutor" class="form-label">Tutor</label>
-                            <input type="text" class="form-control" id="tutor" aria-describedby="tutor" [(ngModel)]="tutor" formControlName="tutor">
+                            <input type="text" class="form-control inputNew" id="tutor" aria-describedby="tutor" [(ngModel)]="tutor" formControlName="tutor" [class]="validarCampo('tutor')">
+                                                    
+                            <div *ngIf="profileForm.get('tutor').invalid && (profileForm.get('tutor').dirty || profileForm.get('tutor').touched)">
+                              <div *ngIf="profileForm.get('tutor').errors?.required" class="error">
+                                  Este campo es obligatorio.
+                              </div>
+                              <div *ngIf="profileForm.get('tutor').errors?.pattern" class="error">
+                                  Sin caracteres especiales.
+                              </div>
+                            </div>
                           </div>
+                          
                           <div class="mb-3">
                             <div class="row">
                               <div class="col-12 col-lg-6">
                                 <label for="mes" class="form-label">Mes</label>
-                                <select id="mes" class="form-select" [(ngModel)]="mes" formControlName="mes">
+                                <select id="mes" class="form-select inputNew" [(ngModel)]="mes" formControlName="mes" [class]="validarCampo('mes')">
                                   <option selected>Seleccione el mes</option>
                                   <option value="ENERO">ENERO</option>
                                   <option value="FEBRERO">FEBRERO</option>
@@ -67,10 +114,23 @@
                                   <option value="NOVIEMBRE">NOVIEMBRE</option>
                                   <option value="DICIEMBRE">DICIEMBRE</option>
                                 </select>
+                 
+                                <div *ngIf="profileForm.get('mes').invalid && (profileForm.get('mes').dirty || profileForm.get('mes').touched)">
+                                  <div *ngIf="profileForm.get('mes').errors?.required" class="error">
+                                      Este campo es obligatorio.
+                                  </div>
+                                </div>
                               </div>
+                              
                               <div class="col-12 col-lg-6 " >
                                 <label for="anio" class="form-label">Año</label>
-                                <input type="number" class="form-control" id="anio" aria-describedby="anio" [(ngModel)]="anio" formControlName="anio">
+                                <input type="number" class="form-control inputNew" id="anio" aria-describedby="anio" [(ngModel)]="anio" formControlName="anio" [class]="validarCampo('anio')">
+                                                        
+                                <div *ngIf="profileForm.get('anio').invalid && (profileForm.get('anio').dirty || profileForm.get('anio').touched)">
+                                  <div *ngIf="profileForm.get('anio').errors?.required" class="error">
+                                      Este campo es obligatorio.
+                                  </div>
+                                </div>
                               </div>
                             </div>
                           </div>
@@ -78,29 +138,51 @@
                             <div class="row">
                               <div class="col-12 col-lg-6 " >
                                 <label for="mes" class="form-label">Cantidad</label>
-                                <select class="form-select" aria-label="Default select example" [(ngModel)]="cantidad" formControlName="cantidad">
+                                <select class="form-select inputNew" aria-label="Default select example" [(ngModel)]="cantidad" formControlName="cantidad" [class]="validarCampo('cantidad')">
                                   <option selected>Seleccione la cantidad</option>
                                   <option value="1">1</option>
                                   <option value="2">2</option>
                                   <option value="3">3</option>
                                 </select>
+                                                          
+                                <div *ngIf="profileForm.get('cantidad').invalid && (profileForm.get('cantidad').dirty || profileForm.get('cantidad').touched)">
+                                  <div *ngIf="profileForm.get('cantidad').errors?.required" class="error">
+                                      Este campo es obligatorio.
+                                  </div>
+                                  <div *ngIf="profileForm.get('cantidad').errors?.pattern" class="error">
+                                      Debe ser mayor a 0.
+                                  </div>
+                                </div>
                               </div>
                               <div class="col-12 col-lg-6 " >
                                 <div class="mb-3">
-                                  <label for="precio" class="form-label">Precio <div id="precio"><strong>{{cantidad*50}} Bs.</strong></div></label>
+                                  <label for="precio" class="form-label">Precio <div id="precio"><strong>{{cantidad*precioEmpastado}} Bs.</strong></div></label>
                                 </div>
                               </div>
                             </div>
                           </div>
                           
                           <div class="d-flex justify-content-evenly">
-                              <a [hidden]="!habilitado()" class="btn btn-main-login" aria-current="page" (click)="guardarReserva()">Reservar</a>
-                              <a [hidden]="habilitado()" class="btn btn-main" aria-current="page" href='/login'>Inicia sesion para reservar</a>
+                              <button [hidden]="!habilitado()" class="btn btn-main-login" aria-current="page" (click)="guardarReserva()" [disabled]="!profileForm.valid"><i class="fas fa-paper-plane"></i> Enviar</button>
+                              <a [hidden]="habilitado()" class="btn btn-main" aria-current="page" href='/login'>Iniciar sesion</a>
                           </div>
                       </form>
                   </div>
               </div>
           </div>
+          </div>
+          <div class="col-12 col-lg-6 ">
+            <div class="container1">
+              <img class="imgEmpastado imagenEmpastado img-fluid" src="/assets/plantilla-empastado.png" alt="photo1">
+              <div class="facultad">{{facultad}}</div>
+              <div class="carrera">{{carrera}}</div>
+              <div class="titulo">{{titulo}}</div>
+              <div class="trabajo">{{trabajo}}</div>
+              <div class="autor">{{autor}}</div>
+              <div class="tutor">{{tutor}}</div>
+              <div class="mes">{{mes}}</div>
+              <div class="anio">{{anio}}</div>
+            </div>
           </div>
       </div>
       <div class="row justify-content-center">
