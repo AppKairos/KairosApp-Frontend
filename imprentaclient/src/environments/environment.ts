@@ -5,6 +5,8 @@
 export const environment = {
   production: true,
   appUrl: 'http://localhost:57077/'
+  //appUrl: 'https://kairosback.herokuapp.com/'
+
 };
 
 /*

@@ -9,6 +9,16 @@
     border-radius: 3px;
   }
   
+@media (max-width: 991px) {
+  .container1 div {
+    font-size: 1.5vw;
+  }
+  .imagenEmpastado {
+    max-width: 60%;
+    height: auto;
+  }
+}
+
   .facultad {
     text-align: center;
     font-weight: bolder;
