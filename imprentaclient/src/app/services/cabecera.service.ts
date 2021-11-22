@@ -17,6 +17,7 @@ export class CabeceraService {
   }
 
   storeUser(usuario: any){
+    localStorage.removeItem('usuario');
     localStorage.setItem('usuario',JSON.stringify(usuario));
     this.subjectVisible$.next({usuario: usuario});
   }

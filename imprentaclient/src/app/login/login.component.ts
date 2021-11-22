@@ -103,7 +103,7 @@ export class LoginComponent implements OnInit, OnDestroy {
       if(!(response["token"] === "")){
         let usuario = {};
         usuario['token'] = response['token'];
-        usuario['usuario'] = response;
+        usuario['usuario'] = response['usuario'];
         //alert('Usuario verificado');
         this.cabeceraService.storeUser(usuario);
         this.router.navigate(['/productos']);
